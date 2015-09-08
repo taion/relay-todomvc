@@ -3,6 +3,12 @@
 		"name": "Relay",
 		"description": "A JavaScript framework for building data-driven React applications",
 		"homepage": "facebook.github.io/relay/",
+		"examples": [{
+			"name": "Example",
+			"url": "http://www.fashionablenonsense.com/relay-todomvc",
+			"source_url": "https://github.com/taion/relay-todomvc",
+			"type": "backend"
+		}],
 		"link_groups": [{
 			"heading": "Official Resources",
 			"links": [{
