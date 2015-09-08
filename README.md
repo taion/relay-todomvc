@@ -9,3 +9,8 @@ Visit http://www.fashionablenonsense.com/relay-todomvc/, or clone this repo and 
 npm install
 npm start
 ```
+
+## Notes
+
+- The schema design is intended to demonstrate the use of route parameters. To take full advantage of Relay mutations, you would instead implement this with separate `todos`, `activeTodos`, and `completedTodos` connections, rather than a single parameterized `todos` connection.
+- Most of the code is taken directly from https://github.com/facebook/relay/tree/master/examples/todo and falls under [that license](https://github.com/facebook/relay/tree/master/examples/todo#license).
