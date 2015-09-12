@@ -1,8 +1,8 @@
+import createHashHistory from 'history/lib/createHashHistory';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Relay from 'react-relay';
 import {Router} from 'react-router';
-import {history} from 'react-router/lib/HashHistory';
 import ReactRouterRelay from 'react-router-relay';
 import RelayLocalSchema from 'relay-local-schema';
 
@@ -18,6 +18,8 @@ import './assets/learn.json';
 Relay.injectNetworkLayer(
   new RelayLocalSchema.NetworkLayer({schema})
 );
+
+const history = createHashHistory({queryKey: false});
 
 const mountNode = document.createElement('div');
 document.body.appendChild(mountNode);

@@ -1,5 +1,5 @@
 import React from 'react';
-import {Route} from 'react-router';
+import {IndexRoute, Route} from 'react-router';
 
 import ViewerQueries from './queries/ViewerQueries';
 
@@ -8,16 +8,16 @@ import TodoList from './components/TodoList';
 
 export default (
   <Route
-    component={TodoApp}
+    path="/" component={TodoApp}
     queries={ViewerQueries}
   >
-    <Route
-      path="/" component={TodoList}
+    <IndexRoute
+      component={TodoList}
       queries={ViewerQueries}
       queryParams={['status']} // Inject the status param to trigger re-fetch.
     />
     <Route
-      path="/:status" component={TodoList}
+      path=":status" component={TodoList}
       queries={ViewerQueries}
     />
   </Route>
