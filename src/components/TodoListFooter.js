@@ -1,6 +1,7 @@
 import React from 'react';
 import Relay from 'react-relay';
-import {Link} from 'react-router';
+import IndexLink from 'react-router/lib/IndexLink';
+import Link from 'react-router/lib/Link';
 
 import RemoveCompletedTodosMutation
   from '../mutations/RemoveCompletedTodosMutation';
@@ -48,16 +49,13 @@ class TodoListFooter extends React.Component {
   }
 
   render() {
-    // Can't use activeClassName here because "/" is always active.
-    const allLinkClassName = this.props.params.status ? null : 'selected';
-
     return (
       <footer className="footer">
         {this.renderRemaining()}
 
         <ul className="filters">
           <li>
-            <Link to="/" className={allLinkClassName}>All</Link>
+            <IndexLink to="/" activeClassName="selected">All</IndexLink>
           </li>
           <li>
             <Link to="/active" activeClassName="selected">Active</Link>
