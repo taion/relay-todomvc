@@ -9,7 +9,6 @@ import TodoTextInput from './TodoTextInput';
 class TodoApp extends React.Component {
   static propTypes = {
     viewer: React.PropTypes.object.isRequired,
-    params: React.PropTypes.object.isRequired,
     children: React.PropTypes.node.isRequired
   };
 
@@ -22,7 +21,7 @@ class TodoApp extends React.Component {
   };
 
   render() {
-    const {viewer, params, children} = this.props;
+    const {viewer, children} = this.props;
 
     return (
       <div data-framework="relay">
@@ -39,10 +38,7 @@ class TodoApp extends React.Component {
 
           {children}
 
-          <TodoListFooter
-            viewer={viewer} todos={viewer.todos}
-            params={params}
-          />
+          <TodoListFooter viewer={viewer} />
         </section>
 
         <footer className="info">
@@ -65,9 +61,6 @@ export default Relay.createContainer(TodoApp, {
   fragments: {
     viewer: () => Relay.QL`
       fragment on User {
-        todos(first: 9007199254740991) {
-          ${TodoListFooter.getFragment('todos')}
-        },
         ${TodoListFooter.getFragment('viewer')},
         ${AddTodoMutation.getFragment('viewer')}
       }

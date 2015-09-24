@@ -8,13 +8,12 @@ import RemoveCompletedTodosMutation
 
 class TodoListFooter extends React.Component {
   static propTypes = {
-    viewer: React.PropTypes.object.isRequired,
-    todos: React.PropTypes.object.isRequired,
-    params: React.PropTypes.object.isRequired
+    viewer: React.PropTypes.object.isRequired
   };
 
   onClearCompletedClick = () => {
-    const {viewer, todos} = this.props;
+    const {viewer} = this.props;
+    const {todos} = viewer;
 
     Relay.Store.update(
       new RemoveCompletedTodosMutation({viewer, todos})
@@ -22,7 +21,7 @@ class TodoListFooter extends React.Component {
   };
 
   renderRemaining() {
-    const {numTodos} = this.props.todos;
+    const {numTodos} = this.props.viewer;
 
     return (
       <span className="todo-count">
@@ -34,7 +33,7 @@ class TodoListFooter extends React.Component {
   }
 
   renderClearCompleted() {
-    if (!this.props.todos.numCompletedTodos) {
+    if (!this.props.viewer.numCompletedTodos) {
       return null;
     }
 
@@ -49,6 +48,10 @@ class TodoListFooter extends React.Component {
   }
 
   render() {
+    if (!this.props.viewer.numTodos) {
+      return null;
+    }
+
     return (
       <footer className="footer">
         {this.renderRemaining()}
@@ -72,17 +75,21 @@ class TodoListFooter extends React.Component {
 }
 
 export default Relay.createContainer(TodoListFooter, {
+  prepareVariables() {
+    return {
+      limit: Number.MAX_SAFE_INTEGER || 9007199254740991
+    };
+  },
+
   fragments: {
     viewer: () => Relay.QL`
       fragment on User {
-        ${RemoveCompletedTodosMutation.getFragment('viewer')}
-      }
-    `,
-    todos: () => Relay.QL`
-      fragment on TodoConnection {
+        todos(status: "completed", first: $limit) {
+          ${RemoveCompletedTodosMutation.getFragment('todos')}
+        },
         numTodos,
         numCompletedTodos,
-        ${RemoveCompletedTodosMutation.getFragment('todos')}
+        ${RemoveCompletedTodosMutation.getFragment('viewer')}
       }
     `
   }

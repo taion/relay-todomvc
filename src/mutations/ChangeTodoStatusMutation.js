@@ -6,9 +6,7 @@ export default class ChangeTodoStatusMutation extends Relay.Mutation {
     viewer: () => Relay.QL`
       fragment on User {
         id,
-        todos {
-          numCompletedTodos
-        }
+        numCompletedTodos
       }
     `,
 
@@ -27,7 +25,8 @@ export default class ChangeTodoStatusMutation extends Relay.Mutation {
     return Relay.QL`
       fragment on ChangeTodoStatusPayload {
         viewer {
-          todos
+          todos,
+          numCompletedTodos
         },
         todo {
           complete
@@ -55,19 +54,12 @@ export default class ChangeTodoStatusMutation extends Relay.Mutation {
 
   getOptimisticResponse() {
     const {viewer, todo, complete} = this.props;
-    let viewerPayload;
+    const viewerPayload = {id: viewer.id};
 
-    if (viewer.todos) {
-      viewerPayload = {
-        id: viewer.id,
-        todos: {}
-      };
-
-      const {numCompletedTodos} = viewer.todos;
-      if (numCompletedTodos != null) {
-        viewerPayload.todos.numCompletedTodos =
-          numCompletedTodos + (complete ? 1 : -1);
-      }
+    const {numCompletedTodos} = viewer;
+    if (numCompletedTodos != null) {
+      viewerPayload.numCompletedTodos =
+        numCompletedTodos + (complete ? 1 : -1);
     }
 
     return {

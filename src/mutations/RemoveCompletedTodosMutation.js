@@ -4,7 +4,9 @@ export default class RemoveCompletedTodosMutation extends Relay.Mutation {
   static fragments = {
     viewer: () => Relay.QL`
       fragment on User {
-        id
+        id,
+        numTodos,
+        numCompletedTodos
       }
     `,
 
@@ -16,9 +18,7 @@ export default class RemoveCompletedTodosMutation extends Relay.Mutation {
             id,
             complete
           }
-        },
-        numTodos,
-        numCompletedTodos
+        }
       }
     `
   };
@@ -31,10 +31,8 @@ export default class RemoveCompletedTodosMutation extends Relay.Mutation {
     return Relay.QL`
       fragment on RemoveCompletedTodosPayload {
         viewer {
-          todos {
-            numTodos,
-            numCompletedTodos
-          },
+          numTodos,
+          numCompletedTodos
         },
         deletedIds
       }
@@ -57,15 +55,15 @@ export default class RemoveCompletedTodosMutation extends Relay.Mutation {
 
   getOptimisticResponse() {
     const {viewer, todos} = this.props;
+
+    const {numTodos, numCompletedTodos} = viewer;
     let newNumTodos;
+    if (numTodos != null && numCompletedTodos != null) {
+      newNumTodos = numTodos - numCompletedTodos;
+    }
+
     let deletedIds;
-
     if (todos) {
-      const {numTodos, numCompletedTodos} = todos;
-      if (numTodos != null && numCompletedTodos != null) {
-        newNumTodos = numTodos - numCompletedTodos;
-      }
-
       if (todos.edges) {
         deletedIds = todos.edges
           .filter(({node}) => node.complete)
@@ -76,10 +74,8 @@ export default class RemoveCompletedTodosMutation extends Relay.Mutation {
     return {
       viewer: {
         id: viewer.id,
-        todos: {
-          numTodos: newNumTodos,
-          numCompletedTodos: 0
-        }
+        numTodos: newNumTodos,
+        numCompletedTodos: 0
       },
       deletedIds
     };

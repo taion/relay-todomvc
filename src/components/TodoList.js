@@ -33,7 +33,7 @@ class TodoList extends React.Component {
   }
 
   render() {
-    const {numTodos, numCompletedTodos} = this.props.viewer.todos;
+    const {numTodos, numCompletedTodos} = this.props.viewer;
     if (!numTodos) {
       return null;
     }
@@ -58,44 +58,41 @@ class TodoList extends React.Component {
   }
 }
 
-// In practice to optimally use the capacities of Relay's mutations, you'd use
-// separate activeTodos and completedTodos connections and modify them
-// separately in mutations. I'm using a single todos connection with a complete
-// argument to demonstrate how to pass variables down from the route, though.
-
 export default Relay.createContainer(TodoList, {
   initialVariables: {
     status: null
   },
 
   prepareVariables({status}) {
-    let complete;
-
-    if (status === 'active') {
-      complete = false;
-    } else if (status === 'completed') {
-      complete = true;
+    let nextStatus;
+    if (status === 'active' || status === 'completed') {
+      nextStatus = status;
     } else {
-      complete = null;
+      // This matches the Backbone examples, which displays all todos on an
+      // invalid route.
+      nextStatus = 'any';
     }
 
-    return {complete};
+    return {
+      status: nextStatus,
+      limit: Number.MAX_SAFE_INTEGER || 9007199254740991
+    };
   },
 
   fragments: {
     viewer: () => Relay.QL`
       fragment on User {
-        todos(complete: $complete, first: 9007199254740991) {
+        todos(status: $status, first: $limit) {
           edges {
             node {
               id,
               ${Todo.getFragment('todo')}
             }
           }
-          numTodos,
-          numCompletedTodos,
           ${MarkAllTodosMutation.getFragment('todos')}
         },
+        numTodos,
+        numCompletedTodos,
         ${Todo.getFragment('viewer')},
         ${MarkAllTodosMutation.getFragment('viewer')}
       }

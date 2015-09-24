@@ -4,7 +4,8 @@ export default class MarkAllTodosMutation extends Relay.Mutation {
   static fragments = {
     viewer: () => Relay.QL`
       fragment on User {
-        id
+        id,
+        numTodos
       }
     `,
 
@@ -15,9 +16,8 @@ export default class MarkAllTodosMutation extends Relay.Mutation {
           node {
             id,
             complete
-          },
-        },
-        numTodos
+          }
+        }
       }
     `
   };
@@ -30,7 +30,8 @@ export default class MarkAllTodosMutation extends Relay.Mutation {
     return Relay.QL`
       fragment on MarkAllTodosPayload {
         viewer {
-          todos
+          todos,
+          numCompletedTodos
         }
       }
     `;
@@ -53,29 +54,24 @@ export default class MarkAllTodosMutation extends Relay.Mutation {
 
   getOptimisticResponse() {
     const {viewer, todos, complete} = this.props;
-    let viewerPayload;
+    const viewerPayload = {id: viewer.id};
 
-    if (todos) {
-      viewerPayload = {
-        id: viewer.id,
-        todos: {}
-      };
-
-      if (todos.edges) {
-        viewerPayload.todos.edges = todos.edges
+    if (todos && todos.edges) {
+      viewerPayload.todos = {
+        edges: todos.edges
           .filter(({node}) => node.complete !== complete)
           .map(({node}) => ({
             node: {
               id: node.id,
               complete
             }
-          }));
-      }
+          }))
+      };
+    }
 
-      const {totalCount} = todos;
-      if (totalCount != null) {
-        viewerPayload.todos.completedCount = complete ? totalCount : 0;
-      }
+    const {totalCount} = viewer;
+    if (totalCount != null) {
+      viewerPayload.completedCount = complete ? totalCount : 0;
     }
 
     return {

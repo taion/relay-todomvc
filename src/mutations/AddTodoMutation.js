@@ -1,17 +1,11 @@
 import Relay from 'react-relay';
 
-// Unlike in the upstream example, this has to re-fetch the entire list of
-// todos, because we don't have separate connections for active and completed
-// todos.
-
 export default class AddTodoMutation extends Relay.Mutation {
   static fragments = {
     viewer: () => Relay.QL`
       fragment on User {
         id,
-        todos {
-          numTodos
-        }
+        numTodos
       }
     `
   };
@@ -24,7 +18,8 @@ export default class AddTodoMutation extends Relay.Mutation {
     return Relay.QL`
       fragment on AddTodoPayload {
         viewer {
-          todos
+          todos,
+          numTodos
         },
         todoEdge
       }
@@ -46,7 +41,10 @@ export default class AddTodoMutation extends Relay.Mutation {
         connectionName: 'todos',
         edgeName: 'todoEdge',
         rangeBehaviors: {
-          '': 'append'
+          '': 'append',
+          'status(any)': 'append',
+          'status(active)': 'append',
+          'status(completed)': null
         }
       }
     ];
@@ -64,9 +62,7 @@ export default class AddTodoMutation extends Relay.Mutation {
     return {
       viewer: {
         id: viewer.id,
-        todos: {
-          numTodos: viewer.todos.numTodos + 1
-        }
+        numTodos: viewer.numTodos + 1
       },
 
       // FIXME: numTodos gets updated optimistically, but this edge does not

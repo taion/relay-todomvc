@@ -77,17 +77,7 @@ const {
   edgeType: GraphQLTodoEdge,
 } = connectionDefinitions({
   name: 'Todo',
-  nodeType: GraphQLTodo,
-  connectionFields: () => ({
-    numTodos: {
-      type: GraphQLInt,
-      resolve: conn => conn.edges.length
-    },
-    numCompletedTodos: {
-      type: GraphQLInt,
-      resolve: conn => conn.edges.filter(edge => edge.node.complete).length
-    }
-  })
+  nodeType: GraphQLTodo
 });
 
 const GraphQLUser = new GraphQLObjectType({
@@ -97,11 +87,22 @@ const GraphQLUser = new GraphQLObjectType({
     todos: {
       type: TodosConnection,
       args: {
-        complete: {type: GraphQLBoolean},
+        status: {
+          type: GraphQLString,
+          defaultValue: 'any'
+        },
         ...connectionArgs
       },
-      resolve: (obj, {complete, ...args}) =>
-        connectionFromArray(getTodos(complete), args)
+      resolve: (obj, {status, ...args}) =>
+        connectionFromArray(getTodos(status), args)
+    },
+    numTodos: {
+      type: GraphQLInt,
+      resolve: () => getTodos().length
+    },
+    numCompletedTodos: {
+      type: GraphQLInt,
+      resolve: () => getTodos('completed').length
     }
   },
   interfaces: [nodeInterface]

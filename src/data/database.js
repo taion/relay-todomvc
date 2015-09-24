@@ -44,13 +44,13 @@ export function changeTodoStatus(id, complete) {
   todo.complete = complete;
 }
 
-export function getTodos(complete) {
+export function getTodos(status = 'any') {
   const todos = todoIdsByUser[VIEWER_ID].map(id => todosById[id]);
-  if (complete == null) {
+  if (status === 'any') {
     return todos;
   }
 
-  return todos.filter(todo => todo.complete === complete);
+  return todos.filter(todo => todo.complete === (status === 'completed'));
 }
 
 export function getUser() {

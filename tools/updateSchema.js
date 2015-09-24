@@ -1,6 +1,6 @@
 import fs from 'fs';
 import {graphql} from 'graphql';
-import {introspectionQuery} from 'graphql/utilities';
+import {introspectionQuery, printSchema} from 'graphql/utilities';
 import path from 'path';
 
 import schema from '../src/data/schema';
@@ -16,3 +16,8 @@ async () => {
     JSON.stringify(result, null, 2)
   );
 }();
+
+fs.writeFileSync(
+  path.join(__dirname, '../src/data/schema.graphql'),
+  printSchema(schema)
+);
