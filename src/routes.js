@@ -14,7 +14,7 @@ export default (
     <IndexRoute
       component={TodoList}
       queries={ViewerQueries}
-      queryParams={['status']} // Inject the status param to trigger re-fetch.
+      prepareParams={() => ({status: 'any'})}
     />
     <Route
       path=":status" component={TodoList}
