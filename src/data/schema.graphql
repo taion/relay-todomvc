@@ -107,7 +107,7 @@ type TodoEdge {
 
 type User implements Node {
   id: ID!
-  todos(status: String = "any", before: String, after: String, first: Int, last: Int): TodoConnection
+  todos(status: String = "any", after: String, first: Int, before: String, last: Int): TodoConnection
   numTodos: Int
   numCompletedTodos: Int
 }
