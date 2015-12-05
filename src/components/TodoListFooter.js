@@ -76,7 +76,7 @@ class TodoListFooter extends React.Component {
 export default Relay.createContainer(TodoListFooter, {
   prepareVariables() {
     return {
-      limit: Number.MAX_SAFE_INTEGER || 9007199254740991
+      limit: -1 >>> 1
     };
   },
 

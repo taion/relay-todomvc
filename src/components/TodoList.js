@@ -75,7 +75,7 @@ export default Relay.createContainer(TodoList, {
 
     return {
       status: nextStatus,
-      limit: Number.MAX_SAFE_INTEGER || 9007199254740991
+      limit: -1 >>> 1
     };
   },
 
