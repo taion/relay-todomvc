@@ -57,7 +57,7 @@ export default class AddTodoMutation extends Relay.Mutation {
   }
 
   getOptimisticResponse() {
-    const {viewer, text} = this.props;
+    const { viewer, text } = this.props;
 
     return {
       viewer: {

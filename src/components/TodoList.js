@@ -11,19 +11,19 @@ class TodoList extends React.Component {
   };
 
   onToggleAllChange = (e) => {
-    const {viewer} = this.props;
-    const {todos} = viewer;
+    const { viewer } = this.props;
+    const { todos } = viewer;
     const complete = e.target.checked;
 
     Relay.Store.update(
-      new MarkAllTodosMutation({viewer, todos, complete})
+      new MarkAllTodosMutation({ viewer, todos, complete })
     );
   };
 
   renderTodos() {
-    const {viewer} = this.props;
+    const { viewer } = this.props;
 
-    return viewer.todos.edges.map(({node}) =>
+    return viewer.todos.edges.map(({ node }) =>
       <Todo
         key={node.id}
         viewer={viewer}
@@ -33,7 +33,7 @@ class TodoList extends React.Component {
   }
 
   render() {
-    const {numTodos, numCompletedTodos} = this.props.viewer;
+    const { numTodos, numCompletedTodos } = this.props.viewer;
     if (!numTodos) {
       return null;
     }
@@ -63,7 +63,7 @@ export default Relay.createContainer(TodoList, {
     status: null
   },
 
-  prepareVariables({status}) {
+  prepareVariables({ status }) {
     let nextStatus;
     if (status === 'active' || status === 'completed') {
       nextStatus = status;

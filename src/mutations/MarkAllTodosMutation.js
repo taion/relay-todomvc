@@ -53,14 +53,14 @@ export default class MarkAllTodosMutation extends Relay.Mutation {
   }
 
   getOptimisticResponse() {
-    const {viewer, todos, complete} = this.props;
-    const viewerPayload = {id: viewer.id};
+    const { viewer, todos, complete } = this.props;
+    const viewerPayload = { id: viewer.id };
 
     if (todos && todos.edges) {
       viewerPayload.todos = {
         edges: todos.edges
-          .filter(({node}) => node.complete !== complete)
-          .map(({node}) => ({
+          .filter(({ node }) => node.complete !== complete)
+          .map(({ node }) => ({
             node: {
               id: node.id,
               complete
@@ -69,7 +69,7 @@ export default class MarkAllTodosMutation extends Relay.Mutation {
       };
     }
 
-    const {totalCount} = viewer;
+    const { totalCount } = viewer;
     if (totalCount != null) {
       viewerPayload.completedCount = complete ? totalCount : 0;
     }

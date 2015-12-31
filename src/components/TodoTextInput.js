@@ -32,7 +32,7 @@ export default class TodoTextInput extends React.Component {
   };
 
   onChange = (e) => {
-    this.setState({text: e.target.value});
+    this.setState({ text: e.target.value });
   };
 
   onBlur = () => {
@@ -49,7 +49,7 @@ export default class TodoTextInput extends React.Component {
       this.props.onCancel();
     } else if (newText) {
       this.props.onSave(newText);
-      this.setState({text: ''});
+      this.setState({ text: '' });
     }
   }
 

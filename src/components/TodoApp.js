@@ -13,15 +13,15 @@ class TodoApp extends React.Component {
   };
 
   onNewTodoSave = (text) => {
-    const {viewer} = this.props;
+    const { viewer } = this.props;
 
     Relay.Store.update(
-      new AddTodoMutation({viewer, text})
+      new AddTodoMutation({ viewer, text })
     );
   };
 
   render() {
-    const {viewer, children} = this.props;
+    const { viewer, children } = this.props;
 
     return (
       <div data-framework="relay">

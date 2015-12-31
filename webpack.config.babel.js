@@ -20,8 +20,8 @@ export default {
           plugins: ['./tools/babelRelayPlugin']
         }
       },
-      {test: /\.css$/, loader: 'style!css'},
-      {test: /learn\.json$/, loader: 'file?name=[name].[ext]'}
+      { test: /\.css$/, loader: 'style!css' },
+      { test: /learn\.json$/, loader: 'file?name=[name].[ext]' }
     ]
   },
   resolve: {
@@ -29,7 +29,7 @@ export default {
   },
   plugins: [
     new webpack.DefinePlugin({
-      'process.env': {NODE_ENV: JSON.stringify(process.env.NODE_ENV)}
+      'process.env': { NODE_ENV: JSON.stringify(process.env.NODE_ENV) }
     }),
     new HtmlWebpackPlugin({
       title: 'Relay • TodoMVC'

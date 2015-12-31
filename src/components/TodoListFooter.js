@@ -1,6 +1,6 @@
 import React from 'react';
 import Relay from 'react-relay';
-import {IndexLink, Link} from 'react-router';
+import { IndexLink, Link } from 'react-router';
 
 import RemoveCompletedTodosMutation
   from '../mutations/RemoveCompletedTodosMutation';
@@ -11,16 +11,16 @@ class TodoListFooter extends React.Component {
   };
 
   onClearCompletedClick = () => {
-    const {viewer} = this.props;
-    const {todos} = viewer;
+    const { viewer } = this.props;
+    const { todos } = viewer;
 
     Relay.Store.update(
-      new RemoveCompletedTodosMutation({viewer, todos})
+      new RemoveCompletedTodosMutation({ viewer, todos })
     );
   };
 
   renderRemaining() {
-    const {numTodos} = this.props.viewer;
+    const { numTodos } = this.props.viewer;
 
     return (
       <span className="todo-count">

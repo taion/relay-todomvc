@@ -23,11 +23,11 @@ class Todo extends React.Component {
   }
 
   onCompleteChange = (e) => {
-    const {viewer, todo} = this.props;
+    const { viewer, todo } = this.props;
     const complete = e.target.checked;
 
     Relay.Store.update(
-      new ChangeTodoStatusMutation({viewer, todo, complete})
+      new ChangeTodoStatusMutation({ viewer, todo, complete })
     );
   };
 
@@ -49,23 +49,23 @@ class Todo extends React.Component {
   };
 
   onTextInputSave = (text) => {
-    const {todo} = this.props;
+    const { todo } = this.props;
 
     this.setEditMode(false);
     Relay.Store.update(
-      new RenameTodoMutation({todo, text})
+      new RenameTodoMutation({ todo, text })
     );
   };
 
   setEditMode(isEditing) {
-    this.setState({isEditing});
+    this.setState({ isEditing });
   }
 
   removeTodo() {
-    const {viewer, todo} = this.props;
+    const { viewer, todo } = this.props;
 
     Relay.Store.update(
-      new RemoveTodoMutation({viewer, todo})
+      new RemoveTodoMutation({ viewer, todo })
     );
   }
 
@@ -87,14 +87,16 @@ class Todo extends React.Component {
   }
 
   render() {
-    const {complete, text} = this.props.todo;
-    const {isEditing} = this.state;
+    const { complete, text } = this.props.todo;
+    const { isEditing } = this.state;
 
     return (
-      <li className={classNames({
-        completed: complete,
-        editing: isEditing})
-      }>
+      <li
+        className={classNames({
+          completed: complete,
+          editing: isEditing
+        })}
+      >
         <div className="view">
           <input
             type="checkbox"

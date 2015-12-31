@@ -1,5 +1,5 @@
 import React from 'react';
-import {IndexRoute, Route} from 'react-router';
+import { IndexRoute, Route } from 'react-router';
 
 import ViewerQueries from './queries/ViewerQueries';
 
@@ -14,7 +14,7 @@ export default (
     <IndexRoute
       component={TodoList}
       queries={ViewerQueries}
-      prepareParams={() => ({status: 'any'})}
+      prepareParams={() => ({ status: 'any' })}
     />
     <Route
       path=":status" component={TodoList}

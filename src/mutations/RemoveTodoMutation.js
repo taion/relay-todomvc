@@ -53,10 +53,10 @@ export default class RemoveTodoMutation extends Relay.Mutation {
   }
 
   getOptimisticResponse() {
-    const {viewer, todo} = this.props;
-    const viewerPayload = {id: viewer.id};
+    const { viewer, todo } = this.props;
+    const viewerPayload = { id: viewer.id };
 
-    const {numTodos, numCompletedTodos} = viewer;
+    const { numTodos, numCompletedTodos } = viewer;
     if (numTodos != null) {
       viewerPayload.numTodos = numTodos - 1;
     }

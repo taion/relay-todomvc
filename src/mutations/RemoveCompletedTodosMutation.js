@@ -54,9 +54,9 @@ export default class RemoveCompletedTodosMutation extends Relay.Mutation {
   }
 
   getOptimisticResponse() {
-    const {viewer, todos} = this.props;
+    const { viewer, todos } = this.props;
 
-    const {numTodos, numCompletedTodos} = viewer;
+    const { numTodos, numCompletedTodos } = viewer;
     let newNumTodos;
     if (numTodos != null && numCompletedTodos != null) {
       newNumTodos = numTodos - numCompletedTodos;
@@ -66,8 +66,8 @@ export default class RemoveCompletedTodosMutation extends Relay.Mutation {
     if (todos) {
       if (todos.edges) {
         deletedIds = todos.edges
-          .filter(({node}) => node.complete)
-          .map(({node}) => node.id);
+          .filter(({ node }) => node.complete)
+          .map(({ node }) => node.id);
       }
     }
 
