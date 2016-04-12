@@ -65,7 +65,9 @@ export function markAllTodos(complete) {
   const changedTodos = [];
   getTodos().forEach(todo => {
     if (todo.complete !== complete) {
+      /* eslint-disable no-param-reassign */
       todo.complete = complete;
+      /* eslint-enable no-param-reassign */
       changedTodos.push(todo);
     }
   });

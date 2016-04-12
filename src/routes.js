@@ -1,11 +1,12 @@
 import React from 'react';
-import { IndexRoute, Route } from 'react-router';
+import { IndexRoute, Route } from 'rrtr';
 
 import ViewerQueries from './queries/ViewerQueries';
 
 import TodoApp from './components/TodoApp';
 import TodoList from './components/TodoList';
 
+/* eslint-disable react/jsx-no-bind */
 export default (
   <Route
     path="/" component={TodoApp}
@@ -22,3 +23,4 @@ export default (
     />
   </Route>
 );
+/* eslint-enable react/jsx-no-bind */
