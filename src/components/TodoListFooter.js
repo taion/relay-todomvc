@@ -1,6 +1,6 @@
 import React from 'react';
 import Relay from 'react-relay';
-import { IndexLink, Link } from 'react-router';
+import { IndexLink, Link } from 'rrtr';
 
 import RemoveCompletedTodosMutation
   from '../mutations/RemoveCompletedTodosMutation';
