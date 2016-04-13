@@ -4,9 +4,9 @@ import createHashHistory from 'history/lib/createHashHistory';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Relay from 'react-relay';
+import { useRouterHistory } from 'react-router';
 import { RelayRouter } from 'react-router-relay';
 import RelayLocalSchema from 'relay-local-schema';
-import { useRouterHistory } from 'rrtr';
 
 import routes from './routes';
 import schema from './data/schema';

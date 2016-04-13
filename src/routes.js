@@ -1,5 +1,5 @@
 import React from 'react';
-import { IndexRoute, Route } from 'rrtr';
+import { IndexRoute, Route } from 'react-router';
 
 import ViewerQueries from './queries/ViewerQueries';
 
