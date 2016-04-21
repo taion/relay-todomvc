@@ -4,8 +4,8 @@ import createHashHistory from 'history/lib/createHashHistory';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Relay from 'react-relay';
-import { useRouterHistory } from 'react-router';
-import { RelayRouter } from 'react-router-relay';
+import { applyRouterMiddleware, Router, useRouterHistory } from 'react-router';
+import useRelay from 'react-router-relay';
 import RelayLocalSchema from 'relay-local-schema';
 
 import routes from './routes';
@@ -27,6 +27,9 @@ const mountNode = document.createElement('div');
 document.body.appendChild(mountNode);
 
 ReactDOM.render(
-  <RelayRouter history={history} routes={routes} />,
+  <Router
+    history={history} routes={routes}
+    render={applyRouterMiddleware(useRelay)}
+  />,
   mountNode
 );
