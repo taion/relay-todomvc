@@ -7,36 +7,28 @@ export default {
   entry: './src/client',
   output: {
     path: './build',
-    filename: 'bundle.js'
+    filename: 'bundle.js',
   },
   module: {
     loaders: [
-      {
-        test: /\.js$/,
-        exclude: /node_modules/,
-        loader: 'babel',
-        query: {
-          // This can't be loaded through .babelrc for some reason.
-          plugins: ['./tools/babelRelayPlugin']
-        }
-      },
+      { test: /\.js$/, exclude: /node_modules/, loader: 'babel' },
       { test: /\.css$/, loader: 'style!css' },
-      { test: /learn\.json$/, loader: 'file?name=[name].[ext]' }
-    ]
+      { test: /learn\.json$/, loader: 'file?name=[name].[ext]' },
+    ],
   },
   resolve: {
-    extensions: ['', '.js']
+    extensions: ['', '.js'],
   },
   plugins: [
     new webpack.DefinePlugin({
-      'process.env': { NODE_ENV: JSON.stringify(process.env.NODE_ENV) }
+      'process.env': { NODE_ENV: JSON.stringify(process.env.NODE_ENV) },
     }),
     new HtmlWebpackPlugin({
-      title: 'Relay • TodoMVC'
-    })
+      title: 'Relay • TodoMVC',
+    }),
   ],
   devtool: production ? 'source-map' : 'eval-source-map',
   devServer: {
-    contentBase: './build'
-  }
+    contentBase: './build',
+  },
 };

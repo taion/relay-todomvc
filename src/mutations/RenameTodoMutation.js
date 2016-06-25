@@ -6,11 +6,11 @@ export default class RenameTodoMutation extends Relay.Mutation {
       fragment on Todo {
         id
       }
-    `
+    `,
   };
 
   getMutation() {
-    return Relay.QL`mutation{renameTodo}`;
+    return Relay.QL`mutation{ renameTodo }`;
   }
 
   getFatQuery() {
@@ -27,15 +27,15 @@ export default class RenameTodoMutation extends Relay.Mutation {
     return [{
       type: 'FIELDS_CHANGE',
       fieldIDs: {
-        todo: this.props.todo.id
-      }
+        todo: this.props.todo.id,
+      },
     }];
   }
 
   getVariables() {
     return {
       id: this.props.todo.id,
-      text: this.props.text
+      text: this.props.text,
     };
   }
 
@@ -43,8 +43,8 @@ export default class RenameTodoMutation extends Relay.Mutation {
     return {
       todo: {
         id: this.props.todo.id,
-        text: this.props.text
-      }
+        text: this.props.text,
+      },
     };
   }
 }

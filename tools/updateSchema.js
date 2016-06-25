@@ -5,7 +5,7 @@ import path from 'path';
 
 import schema from '../src/data/schema';
 
-async () => {
+(async () => {
   const result = await graphql(schema, introspectionQuery);
   if (result.errors) {
     throw new Error(result.errors);
@@ -15,7 +15,7 @@ async () => {
     path.join(__dirname, '../src/data/schema.json'),
     JSON.stringify(result, null, 2)
   );
-}();
+})();
 
 fs.writeFileSync(
   path.join(__dirname, '../src/data/schema.graphql'),

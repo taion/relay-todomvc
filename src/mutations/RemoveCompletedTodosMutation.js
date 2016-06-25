@@ -4,8 +4,8 @@ export default class RemoveCompletedTodosMutation extends Relay.Mutation {
   static fragments = {
     viewer: () => Relay.QL`
       fragment on User {
-        id,
-        numTodos,
+        id
+        numTodos
         numCompletedTodos
       }
     `,
@@ -15,25 +15,25 @@ export default class RemoveCompletedTodosMutation extends Relay.Mutation {
       fragment on TodoConnection {
         edges {
           node {
-            id,
+            id
             complete
           }
         }
       }
-    `
+    `,
   };
 
   getMutation() {
-    return Relay.QL`mutation{removeCompletedTodos}`;
+    return Relay.QL`mutation{ removeCompletedTodos }`;
   }
 
   getFatQuery() {
     return Relay.QL`
       fragment on RemoveCompletedTodosPayload {
         viewer {
-          numTodos,
+          numTodos
           numCompletedTodos
-        },
+        }
         deletedIds
       }
     `;
@@ -45,7 +45,7 @@ export default class RemoveCompletedTodosMutation extends Relay.Mutation {
       parentName: 'viewer',
       parentID: this.props.viewer.id,
       connectionName: 'todos',
-      deletedIDFieldName: 'deletedIds'
+      deletedIDFieldName: 'deletedIds',
     }];
   }
 
@@ -75,9 +75,9 @@ export default class RemoveCompletedTodosMutation extends Relay.Mutation {
       viewer: {
         id: viewer.id,
         numTodos: newNumTodos,
-        numCompletedTodos: 0
+        numCompletedTodos: 0,
       },
-      deletedIds
+      deletedIds,
     };
   }
 }

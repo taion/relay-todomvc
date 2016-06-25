@@ -1,20 +1,22 @@
 import React from 'react';
 import Relay from 'react-relay';
-import { IndexLink, Link } from 'react-router';
+import IndexLink from 'react-router/lib/IndexLink';
+import Link from 'react-router/lib/Link';
 
 import RemoveCompletedTodosMutation
   from '../mutations/RemoveCompletedTodosMutation';
 
 class TodoListFooter extends React.Component {
   static propTypes = {
-    viewer: React.PropTypes.object.isRequired
+    viewer: React.PropTypes.object.isRequired,
+    relay: React.PropTypes.object.isRequired,
   };
 
   onClearCompletedClick = () => {
-    const { viewer } = this.props;
+    const { relay, viewer } = this.props;
     const { todos } = viewer;
 
-    Relay.Store.update(
+    relay.commitUpdate(
       new RemoveCompletedTodosMutation({ viewer, todos })
     );
   };
@@ -74,10 +76,8 @@ class TodoListFooter extends React.Component {
 }
 
 export default Relay.createContainer(TodoListFooter, {
-  prepareVariables() {
-    return {
-      limit: -1 >>> 1
-    };
+  initialVariables: {
+    limit: -1 >>> 1,
   },
 
   fragments: {
@@ -85,11 +85,11 @@ export default Relay.createContainer(TodoListFooter, {
       fragment on User {
         todos(status: "completed", first: $limit) {
           ${RemoveCompletedTodosMutation.getFragment('todos')}
-        },
-        numTodos,
-        numCompletedTodos,
+        }
+        numTodos
+        numCompletedTodos
         ${RemoveCompletedTodosMutation.getFragment('viewer')}
       }
-    `
-  }
+    `,
+  },
 });

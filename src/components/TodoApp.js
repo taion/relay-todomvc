@@ -2,20 +2,20 @@ import React from 'react';
 import Relay from 'react-relay';
 
 import AddTodoMutation from '../mutations/AddTodoMutation';
-
 import TodoListFooter from './TodoListFooter';
 import TodoTextInput from './TodoTextInput';
 
 class TodoApp extends React.Component {
   static propTypes = {
     viewer: React.PropTypes.object.isRequired,
-    children: React.PropTypes.node.isRequired
+    children: React.PropTypes.node.isRequired,
+    relay: React.PropTypes.object.isRequired,
   };
 
   onNewTodoSave = (text) => {
-    const { viewer } = this.props;
+    const { relay, viewer } = this.props;
 
-    Relay.Store.update(
+    relay.commitUpdate(
       new AddTodoMutation({ viewer, text })
     );
   };
@@ -61,9 +61,9 @@ export default Relay.createContainer(TodoApp, {
   fragments: {
     viewer: () => Relay.QL`
       fragment on User {
-        ${TodoListFooter.getFragment('viewer')},
+        ${TodoListFooter.getFragment('viewer')}
         ${AddTodoMutation.getFragment('viewer')}
       }
-    `
-  }
+    `,
+  },
 });

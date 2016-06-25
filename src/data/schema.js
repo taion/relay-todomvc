@@ -8,7 +8,6 @@ import {
   GraphQLSchema,
   GraphQLString,
 } from 'graphql';
-
 import {
   connectionArgs,
   connectionDefinitions,
@@ -43,69 +42,63 @@ const { nodeInterface, nodeField } = nodeDefinitions(
     const { type, id } = fromGlobalId(globalId);
     if (type === 'Todo') {
       return getTodo(id);
-    } else if (type === 'User') {
+    }
+    if (type === 'User') {
       return getUser(id);
     }
+    return null;
   },
   obj => {
     if (obj instanceof Todo) {
       return GraphQLTodo;
-    } else if (obj instanceof User) {
+    }
+    if (obj instanceof User) {
       return GraphQLUser;
     }
-  }
+    return null;
+  },
 );
 
 const GraphQLTodo = new GraphQLObjectType({
   name: 'Todo',
   fields: {
-    id: globalIdField('Todo'),
-    text: {
-      type: GraphQLString,
-      resolve: obj => obj.text
-    },
-    complete: {
-      type: GraphQLBoolean,
-      resolve: obj => obj.complete
-    }
+    id: globalIdField(),
+    text: { type: GraphQLString },
+    complete: { type: GraphQLBoolean },
   },
-  interfaces: [nodeInterface]
+  interfaces: [nodeInterface],
 });
 
-const {
-  connectionType: TodosConnection,
-  edgeType: GraphQLTodoEdge,
-} = connectionDefinitions({
-  name: 'Todo',
-  nodeType: GraphQLTodo
-});
+const { connectionType: TodosConnection, edgeType: GraphQLTodoEdge } =
+  connectionDefinitions({ nodeType: GraphQLTodo });
 
 const GraphQLUser = new GraphQLObjectType({
   name: 'User',
   fields: {
-    id: globalIdField('User'),
+    id: globalIdField(),
     todos: {
       type: TodosConnection,
       args: {
         status: {
           type: GraphQLString,
-          defaultValue: 'any'
+          defaultValue: 'any',
         },
-        ...connectionArgs
+        ...connectionArgs,
       },
-      resolve: (obj, { status, ...args }) =>
+      resolve: (obj, { status, ...args }) => (
         connectionFromArray(getTodos(status), args)
+      ),
     },
     numTodos: {
       type: GraphQLInt,
-      resolve: () => getTodos().length
+      resolve: () => getTodos().length,
     },
     numCompletedTodos: {
       type: GraphQLInt,
-      resolve: () => getTodos('completed').length
-    }
+      resolve: () => getTodos('completed').length,
+    },
   },
-  interfaces: [nodeInterface]
+  interfaces: [nodeInterface],
 });
 
 const GraphQLRoot = new GraphQLObjectType({
@@ -113,21 +106,21 @@ const GraphQLRoot = new GraphQLObjectType({
   fields: {
     viewer: {
       type: GraphQLUser,
-      resolve: getViewer
+      resolve: getViewer,
     },
-    node: nodeField
-  }
+    node: nodeField,
+  },
 });
 
 const GraphQLAddTodoMutation = mutationWithClientMutationId({
   name: 'AddTodo',
   inputFields: {
-    text: { type: new GraphQLNonNull(GraphQLString) }
+    text: { type: new GraphQLNonNull(GraphQLString) },
   },
   outputFields: {
     viewer: {
       type: GraphQLUser,
-      resolve: getViewer
+      resolve: getViewer,
     },
     todoEdge: {
       type: GraphQLTodoEdge,
@@ -135,59 +128,59 @@ const GraphQLAddTodoMutation = mutationWithClientMutationId({
         const todo = getTodo(todoId);
         return {
           cursor: cursorForObjectInConnection(getTodos(), todo),
-          node: todo
+          node: todo,
         };
-      }
-    }
+      },
+    },
   },
   mutateAndGetPayload: ({ text }) => {
     const todoId = addTodo(text);
     return { todoId };
-  }
+  },
 });
 
 const GraphQLChangeTodoStatusMutation = mutationWithClientMutationId({
   name: 'ChangeTodoStatus',
   inputFields: {
     id: { type: new GraphQLNonNull(GraphQLID) },
-    complete: { type: new GraphQLNonNull(GraphQLBoolean) }
+    complete: { type: new GraphQLNonNull(GraphQLBoolean) },
   },
   outputFields: {
     viewer: {
       type: GraphQLUser,
-      resolve: getViewer
+      resolve: getViewer,
     },
     todo: {
       type: GraphQLTodo,
-      resolve: ({ todoId }) => getTodo(todoId)
-    }
+      resolve: ({ todoId }) => getTodo(todoId),
+    },
   },
   mutateAndGetPayload: ({ id, complete }) => {
     const { id: todoId } = fromGlobalId(id);
     changeTodoStatus(todoId, complete);
     return { todoId };
-  }
+  },
 });
 
 const GraphQLMarkAllTodosMutation = mutationWithClientMutationId({
   name: 'MarkAllTodos',
   inputFields: {
-    complete: { type: new GraphQLNonNull(GraphQLBoolean) }
+    complete: { type: new GraphQLNonNull(GraphQLBoolean) },
   },
   outputFields: {
     viewer: {
       type: GraphQLUser,
-      resolve: getViewer
+      resolve: getViewer,
     },
     changedTodos: {
       type: new GraphQLList(GraphQLTodo),
-      resolve: ({ changedTodoIds }) => changedTodoIds.map(getTodo)
-    }
+      resolve: ({ changedTodoIds }) => changedTodoIds.map(getTodo),
+    },
   },
   mutateAndGetPayload: ({ complete }) => {
     const changedTodoIds = markAllTodos(complete);
     return { changedTodoIds };
-  }
+  },
 });
 
 const GraphQLRemoveCompletedTodosMutation = mutationWithClientMutationId({
@@ -195,59 +188,59 @@ const GraphQLRemoveCompletedTodosMutation = mutationWithClientMutationId({
   outputFields: {
     viewer: {
       type: GraphQLUser,
-      resolve: getViewer
+      resolve: getViewer,
     },
     deletedIds: {
       type: new GraphQLList(GraphQLString),
-      resolve: ({ deletedIds }) => deletedIds
-    }
+      resolve: ({ deletedIds }) => deletedIds,
+    },
   },
   mutateAndGetPayload: () => {
     const deletedTodoIds = removeCompletedTodos();
     const deletedIds = deletedTodoIds.map(toGlobalId.bind(null, 'Todo'));
     return { deletedIds };
-  }
+  },
 });
 
 const GraphQLRemoveTodoMutation = mutationWithClientMutationId({
   name: 'RemoveTodo',
   inputFields: {
-    id: { type: new GraphQLNonNull(GraphQLID) }
+    id: { type: new GraphQLNonNull(GraphQLID) },
   },
   outputFields: {
     viewer: {
       type: GraphQLUser,
-      resolve: getViewer
+      resolve: getViewer,
     },
     deletedId: {
       type: GraphQLID,
-      resolve: ({ id }) => id
-    }
+      resolve: ({ id }) => id,
+    },
   },
   mutateAndGetPayload: ({ id }) => {
     const { id: todoId } = fromGlobalId(id);
     removeTodo(todoId);
     return { id };
-  }
+  },
 });
 
 const GraphQLRenameTodoMutation = mutationWithClientMutationId({
   name: 'RenameTodo',
   inputFields: {
     id: { type: new GraphQLNonNull(GraphQLID) },
-    text: { type: new GraphQLNonNull(GraphQLString) }
+    text: { type: new GraphQLNonNull(GraphQLString) },
   },
   outputFields: {
     todo: {
       type: GraphQLTodo,
-      resolve: ({ todoId }) => getTodo(todoId)
-    }
+      resolve: ({ todoId }) => getTodo(todoId),
+    },
   },
   mutateAndGetPayload: ({ id, text }) => {
     const { id: todoId } = fromGlobalId(id);
     renameTodo(todoId, text);
     return { todoId };
-  }
+  },
 });
 
 const GraphQLMutation = new GraphQLObjectType({
@@ -258,11 +251,11 @@ const GraphQLMutation = new GraphQLObjectType({
     markAllTodos: GraphQLMarkAllTodosMutation,
     removeCompletedTodos: GraphQLRemoveCompletedTodosMutation,
     removeTodo: GraphQLRemoveTodoMutation,
-    renameTodo: GraphQLRenameTodoMutation
-  }
+    renameTodo: GraphQLRenameTodoMutation,
+  },
 });
 
 export default new GraphQLSchema({
   query: GraphQLRoot,
-  mutation: GraphQLMutation
+  mutation: GraphQLMutation,
 });

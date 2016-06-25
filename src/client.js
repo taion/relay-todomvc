@@ -1,10 +1,12 @@
-import 'babel/polyfill';
+import 'babel-polyfill';
 
 import createHashHistory from 'history/lib/createHashHistory';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Relay from 'react-relay';
-import { applyRouterMiddleware, Router, useRouterHistory } from 'react-router';
+import applyRouterMiddleware from 'react-router/lib/applyRouterMiddleware';
+import Router from 'react-router/lib/Router';
+import useRouterHistory from 'react-router/lib/useRouterHistory';
 import useRelay from 'react-router-relay';
 import RelayLocalSchema from 'relay-local-schema';
 
@@ -28,8 +30,10 @@ document.body.appendChild(mountNode);
 
 ReactDOM.render(
   <Router
-    history={history} routes={routes}
+    history={history}
+    routes={routes}
     render={applyRouterMiddleware(useRelay)}
+    environment={Relay.Store}
   />,
   mountNode
 );

@@ -1,4 +1,9 @@
 {
-  "stage": 0,
-  "loose": "all"
+  "passPerPreset": true,
+  "presets": [
+    { "plugins": ["./tools/babelRelayPlugin"] },
+    "react",
+    "es2015-loose",
+    "stage-0"
+  ]
 }

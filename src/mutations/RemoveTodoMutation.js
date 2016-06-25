@@ -5,8 +5,8 @@ export default class RemoveTodoMutation extends Relay.Mutation {
     // TODO: Mark numTodos and numCompletedTodos as optional.
     viewer: () => Relay.QL`
       fragment on User {
-        id,
-        numTodos,
+        id
+        numTodos
         numCompletedTodos
       }
     `,
@@ -14,23 +14,23 @@ export default class RemoveTodoMutation extends Relay.Mutation {
     // TODO: Mark complete as optional.
     todo: () => Relay.QL`
       fragment on Todo {
-        id,
+        id
         complete
       }
-    `
+    `,
   };
 
   getMutation() {
-    return Relay.QL`mutation{removeTodo}`;
+    return Relay.QL`mutation{ removeTodo }`;
   }
 
   getFatQuery() {
     return Relay.QL`
       fragment on RemoveTodoPayload {
         viewer {
-          numTodos,
+          numTodos
           numCompletedTodos
-        },
+        }
         deletedId
       }
     `;
@@ -42,13 +42,13 @@ export default class RemoveTodoMutation extends Relay.Mutation {
       parentName: 'viewer',
       parentID: this.props.viewer.id,
       connectionName: 'todos',
-      deletedIDFieldName: 'deletedId'
+      deletedIDFieldName: 'deletedId',
     }];
   }
 
   getVariables() {
     return {
-      id: this.props.todo.id
+      id: this.props.todo.id,
     };
   }
 
@@ -67,7 +67,7 @@ export default class RemoveTodoMutation extends Relay.Mutation {
 
     return {
       viewer: viewerPayload,
-      deletedId: todo.id
+      deletedId: todo.id,
     };
   }
 }

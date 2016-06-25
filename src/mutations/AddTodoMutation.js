@@ -4,23 +4,23 @@ export default class AddTodoMutation extends Relay.Mutation {
   static fragments = {
     viewer: () => Relay.QL`
       fragment on User {
-        id,
+        id
         numTodos
       }
-    `
+    `,
   };
 
   getMutation() {
-    return Relay.QL`mutation{addTodo}`;
+    return Relay.QL`mutation{ addTodo }`;
   }
 
   getFatQuery() {
     return Relay.QL`
       fragment on AddTodoPayload {
         viewer {
-          todos,
+          todos
           numTodos
-        },
+        }
         todoEdge
       }
     `;
@@ -31,8 +31,8 @@ export default class AddTodoMutation extends Relay.Mutation {
       {
         type: 'FIELDS_CHANGE',
         fieldIDs: {
-          viewer: this.props.viewer.id
-        }
+          viewer: this.props.viewer.id,
+        },
       },
       {
         type: 'RANGE_ADD',
@@ -44,15 +44,15 @@ export default class AddTodoMutation extends Relay.Mutation {
           '': 'append',
           'status(any)': 'append',
           'status(active)': 'append',
-          'status(completed)': null
-        }
-      }
+          'status(completed)': null,
+        },
+      },
     ];
   }
 
   getVariables() {
     return {
-      text: this.props.text
+      text: this.props.text,
     };
   }
 
@@ -62,7 +62,7 @@ export default class AddTodoMutation extends Relay.Mutation {
     return {
       viewer: {
         id: viewer.id,
-        numTodos: viewer.numTodos + 1
+        numTodos: viewer.numTodos + 1,
       },
 
       // FIXME: numTodos gets updated optimistically, but this edge does not
@@ -70,9 +70,9 @@ export default class AddTodoMutation extends Relay.Mutation {
       todoEdge: {
         node: {
           complete: false,
-          text
-        }
-      }
+          text,
+        },
+      },
     };
   }
 }

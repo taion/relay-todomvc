@@ -7,11 +7,11 @@ export default class TodoTextInput extends React.Component {
     initialValue: React.PropTypes.string,
     onCancel: React.PropTypes.func,
     onDelete: React.PropTypes.func,
-    onSave: React.PropTypes.func.isRequired
+    onSave: React.PropTypes.func.isRequired,
   };
 
   static defaultProps = {
-    commitOnBlur: false
+    commitOnBlur: false,
   };
 
   constructor(props, context) {
@@ -19,7 +19,7 @@ export default class TodoTextInput extends React.Component {
 
     this.state = {
       isEditing: false,
-      text: this.props.initialValue || ''
+      text: this.props.initialValue || '',
     };
   }
 
