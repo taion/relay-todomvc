@@ -4,7 +4,7 @@ export default class MarkAllTodosMutation extends Relay.Mutation {
   static fragments = {
     viewer: () => Relay.QL`
       fragment on User {
-        id,
+        id
         numTodos
       }
     `,
@@ -14,23 +14,23 @@ export default class MarkAllTodosMutation extends Relay.Mutation {
       fragment on TodoConnection {
         edges {
           node {
-            id,
+            id
             complete
           }
         }
       }
-    `
+    `,
   };
 
   getMutation() {
-    return Relay.QL`mutation{markAllTodos}`;
+    return Relay.QL`mutation{ markAllTodos }`;
   }
 
   getFatQuery() {
     return Relay.QL`
       fragment on MarkAllTodosPayload {
         viewer {
-          todos,
+          todos
           numCompletedTodos
         }
       }
@@ -41,14 +41,14 @@ export default class MarkAllTodosMutation extends Relay.Mutation {
     return [{
       type: 'FIELDS_CHANGE',
       fieldIDs: {
-        viewer: this.props.viewer.id
-      }
+        viewer: this.props.viewer.id,
+      },
     }];
   }
 
   getVariables() {
     return {
-      complete: this.props.complete
+      complete: this.props.complete,
     };
   }
 
@@ -63,9 +63,9 @@ export default class MarkAllTodosMutation extends Relay.Mutation {
           .map(({ node }) => ({
             node: {
               id: node.id,
-              complete
-            }
-          }))
+              complete,
+            },
+          })),
       };
     }
 
@@ -75,7 +75,7 @@ export default class MarkAllTodosMutation extends Relay.Mutation {
     }
 
     return {
-      viewer: viewerPayload
+      viewer: viewerPayload,
     };
   }
 }

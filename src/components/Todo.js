@@ -5,28 +5,28 @@ import Relay from 'react-relay';
 import ChangeTodoStatusMutation from '../mutations/ChangeTodoStatusMutation';
 import RemoveTodoMutation from '../mutations/RemoveTodoMutation';
 import RenameTodoMutation from '../mutations/RenameTodoMutation';
-
 import TodoTextInput from './TodoTextInput';
 
 class Todo extends React.Component {
   static propTypes = {
     viewer: React.PropTypes.object.isRequired,
-    todo: React.PropTypes.object.isRequired
+    todo: React.PropTypes.object.isRequired,
+    relay: React.PropTypes.object.isRequired,
   };
 
   constructor(props, context) {
     super(props, context);
 
     this.state = {
-      isEditing: false
+      isEditing: false,
     };
   }
 
   onCompleteChange = (e) => {
-    const { viewer, todo } = this.props;
+    const { relay, viewer, todo } = this.props;
     const complete = e.target.checked;
 
-    Relay.Store.update(
+    relay.commitUpdate(
       new ChangeTodoStatusMutation({ viewer, todo, complete })
     );
   };
@@ -49,10 +49,11 @@ class Todo extends React.Component {
   };
 
   onTextInputSave = (text) => {
-    const { todo } = this.props;
+    const { relay, todo } = this.props;
 
     this.setEditMode(false);
-    Relay.Store.update(
+
+    relay.commitUpdate(
       new RenameTodoMutation({ todo, text })
     );
   };
@@ -62,9 +63,9 @@ class Todo extends React.Component {
   }
 
   removeTodo() {
-    const { viewer, todo } = this.props;
+    const { relay, viewer, todo } = this.props;
 
-    Relay.Store.update(
+    relay.commitUpdate(
       new RemoveTodoMutation({ viewer, todo })
     );
   }
@@ -94,7 +95,7 @@ class Todo extends React.Component {
       <li
         className={classNames({
           completed: complete,
-          editing: isEditing
+          editing: isEditing,
         })}
       >
         <div className="view">
@@ -123,19 +124,19 @@ export default Relay.createContainer(Todo, {
   fragments: {
     viewer: () => Relay.QL`
       fragment on User {
-        ${ChangeTodoStatusMutation.getFragment('viewer')},
+        ${ChangeTodoStatusMutation.getFragment('viewer')}
         ${RemoveTodoMutation.getFragment('viewer')}
       }
     `,
     todo: () => Relay.QL`
       fragment on Todo {
-        complete,
-        id,
-        text,
-        ${ChangeTodoStatusMutation.getFragment('todo')},
-        ${RemoveTodoMutation.getFragment('todo')},
+        complete
+        id
+        text
+        ${ChangeTodoStatusMutation.getFragment('todo')}
+        ${RemoveTodoMutation.getFragment('todo')}
         ${RenameTodoMutation.getFragment('todo')}
       }
-    `
-  }
+    `,
+  },
 });

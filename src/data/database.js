@@ -8,12 +8,12 @@ const VIEWER_ID = 'me';
 const viewer = new User();
 viewer.id = VIEWER_ID;
 const usersById = {
-  [VIEWER_ID]: viewer
+  [VIEWER_ID]: viewer,
 };
 
 const todosById = {};
 const todoIdsByUser = {
-  [VIEWER_ID]: []
+  [VIEWER_ID]: [],
 };
 let nextTodoId = 0;
 
@@ -22,7 +22,7 @@ export function addTodo(text, complete) {
   Object.assign(todo, {
     complete: Boolean(complete),
     id: `${nextTodoId++}`,
-    text
+    text,
   });
 
   todosById[todo.id] = todo;
