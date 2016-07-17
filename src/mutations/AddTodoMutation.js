@@ -16,7 +16,7 @@ export default class AddTodoMutation extends Relay.Mutation {
 
   getFatQuery() {
     return Relay.QL`
-      fragment on AddTodoPayload {
+      fragment on AddTodoPayload @relay(pattern: true) {
         viewer {
           todos
           numTodos
@@ -27,27 +27,16 @@ export default class AddTodoMutation extends Relay.Mutation {
   }
 
   getConfigs() {
-    return [
-      {
-        type: 'FIELDS_CHANGE',
-        fieldIDs: {
-          viewer: this.props.viewer.id,
-        },
-      },
-      {
-        type: 'RANGE_ADD',
-        parentName: 'viewer',
-        parentID: this.props.viewer.id,
-        connectionName: 'todos',
-        edgeName: 'todoEdge',
-        rangeBehaviors: {
-          '': 'append',
-          'status(any)': 'append',
-          'status(active)': 'append',
-          'status(completed)': null,
-        },
-      },
-    ];
+    return [{
+      type: 'RANGE_ADD',
+      parentName: 'viewer',
+      parentID: this.props.viewer.id,
+      connectionName: 'todos',
+      edgeName: 'todoEdge',
+      rangeBehaviors: ({ status }) => (
+        status === 'completed' ? 'ignore' : 'append'
+      ),
+    }];
   }
 
   getVariables() {
