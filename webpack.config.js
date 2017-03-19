@@ -26,4 +26,8 @@ module.exports = {
   ],
 
   devtool: production ? 'source-map' : 'module-source-map',
+
+  devServer: {
+    historyApiFallback: true,
+  },
 };

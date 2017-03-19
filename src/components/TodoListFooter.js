@@ -1,8 +1,7 @@
+import Link from 'found/lib/Link';
 import PropTypes from 'prop-types';
 import React from 'react';
 import Relay from 'react-relay';
-import IndexLink from 'react-router/lib/IndexLink';
-import Link from 'react-router/lib/Link';
 
 import RemoveCompletedTodosMutation
   from '../mutations/RemoveCompletedTodosMutation';
@@ -60,7 +59,7 @@ class TodoListFooter extends React.Component {
 
         <ul className="filters">
           <li>
-            <IndexLink to="/" activeClassName="selected">All</IndexLink>
+            <Link to="/" activeClassName="selected" exact>All</Link>
           </li>
           <li>
             <Link to="/active" activeClassName="selected">Active</Link>
