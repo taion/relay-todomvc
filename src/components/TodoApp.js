@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import Relay from 'react-relay';
 
@@ -5,18 +6,18 @@ import AddTodoMutation from '../mutations/AddTodoMutation';
 import TodoListFooter from './TodoListFooter';
 import TodoTextInput from './TodoTextInput';
 
-class TodoApp extends React.Component {
-  static propTypes = {
-    viewer: React.PropTypes.object.isRequired,
-    children: React.PropTypes.node.isRequired,
-    relay: React.PropTypes.object.isRequired,
-  };
+const propTypes = {
+  viewer: PropTypes.object.isRequired,
+  children: PropTypes.node.isRequired,
+  relay: PropTypes.object.isRequired,
+};
 
+class TodoApp extends React.Component {
   onNewTodoSave = (text) => {
     const { relay, viewer } = this.props;
 
     relay.commitUpdate(
-      new AddTodoMutation({ viewer, text })
+      new AddTodoMutation({ viewer, text }),
     );
   };
 
@@ -56,6 +57,8 @@ class TodoApp extends React.Component {
     );
   }
 }
+
+TodoApp.propTypes = propTypes;
 
 export default Relay.createContainer(TodoApp, {
   fragments: {

@@ -20,7 +20,7 @@ import 'todomvc-app-css/index.css';
 import './assets/learn.json';
 
 Relay.injectNetworkLayer(
-  new RelayLocalSchema.NetworkLayer({ schema })
+  new RelayLocalSchema.NetworkLayer({ schema }),
 );
 
 const history = useRouterHistory(createHashHistory)({ queryKey: false });
@@ -35,5 +35,5 @@ ReactDOM.render(
     render={applyRouterMiddleware(useRelay)}
     environment={Relay.Store}
   />,
-  mountNode
+  mountNode,
 );

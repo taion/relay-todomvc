@@ -1,4 +1,5 @@
 import classNames from 'classnames';
+import PropTypes from 'prop-types';
 import React from 'react';
 import Relay from 'react-relay';
 
@@ -7,13 +8,13 @@ import RemoveTodoMutation from '../mutations/RemoveTodoMutation';
 import RenameTodoMutation from '../mutations/RenameTodoMutation';
 import TodoTextInput from './TodoTextInput';
 
-class Todo extends React.Component {
-  static propTypes = {
-    viewer: React.PropTypes.object.isRequired,
-    todo: React.PropTypes.object.isRequired,
-    relay: React.PropTypes.object.isRequired,
-  };
+const propTypes = {
+  viewer: PropTypes.object.isRequired,
+  todo: PropTypes.object.isRequired,
+  relay: PropTypes.object.isRequired,
+};
 
+class Todo extends React.Component {
   constructor(props, context) {
     super(props, context);
 
@@ -27,7 +28,7 @@ class Todo extends React.Component {
     const complete = e.target.checked;
 
     relay.commitUpdate(
-      new ChangeTodoStatusMutation({ viewer, todo, complete })
+      new ChangeTodoStatusMutation({ viewer, todo, complete }),
     );
   };
 
@@ -54,7 +55,7 @@ class Todo extends React.Component {
     this.setEditMode(false);
 
     relay.commitUpdate(
-      new RenameTodoMutation({ todo, text })
+      new RenameTodoMutation({ todo, text }),
     );
   };
 
@@ -66,7 +67,7 @@ class Todo extends React.Component {
     const { relay, viewer, todo } = this.props;
 
     relay.commitUpdate(
-      new RemoveTodoMutation({ viewer, todo })
+      new RemoveTodoMutation({ viewer, todo }),
     );
   }
 
@@ -91,6 +92,7 @@ class Todo extends React.Component {
     const { complete, text } = this.props.todo;
     const { isEditing } = this.state;
 
+    /* eslint-disable jsx-a11y/label-has-for */
     return (
       <li
         className={classNames({
@@ -117,8 +119,11 @@ class Todo extends React.Component {
         {this.renderTextInput()}
       </li>
     );
+    /* eslint-enable jsx-a11y/label-has-for */
   }
 }
+
+Todo.propTypes = propTypes;
 
 export default Relay.createContainer(Todo, {
   fragments: {

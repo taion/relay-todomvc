@@ -1,19 +1,20 @@
 import keycode from 'keycode';
+import PropTypes from 'prop-types';
 import React from 'react';
 
-export default class TodoTextInput extends React.Component {
-  static propTypes = {
-    commitOnBlur: React.PropTypes.bool.isRequired,
-    initialValue: React.PropTypes.string,
-    onCancel: React.PropTypes.func,
-    onDelete: React.PropTypes.func,
-    onSave: React.PropTypes.func.isRequired,
-  };
+const propTypes = {
+  commitOnBlur: PropTypes.bool.isRequired,
+  initialValue: PropTypes.string,
+  onCancel: PropTypes.func,
+  onDelete: PropTypes.func,
+  onSave: PropTypes.func.isRequired,
+};
 
-  static defaultProps = {
-    commitOnBlur: false,
-  };
+const defaultProps = {
+  commitOnBlur: false,
+};
 
+class TodoTextInput extends React.Component {
   constructor(props, context) {
     super(props, context);
 
@@ -54,14 +55,22 @@ export default class TodoTextInput extends React.Component {
   }
 
   render() {
+    const { className, placeholder } = this.props;
+
     return (
       <input
-        {...this.props}
-        onKeyDown={this.onKeyDown}
-        onChange={this.onChange}
+        className={className}
         onBlur={this.onBlur}
+        onChange={this.onChange}
+        onKeyDown={this.onKeyDown}
+        placeholder={placeholder}
         value={this.state.text}
       />
     );
   }
 }
+
+TodoTextInput.propTypes = propTypes;
+TodoTextInput.defaultProps = defaultProps;
+
+export default TodoTextInput;

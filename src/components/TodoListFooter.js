@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import Relay from 'react-relay';
 import IndexLink from 'react-router/lib/IndexLink';
@@ -6,18 +7,18 @@ import Link from 'react-router/lib/Link';
 import RemoveCompletedTodosMutation
   from '../mutations/RemoveCompletedTodosMutation';
 
-class TodoListFooter extends React.Component {
-  static propTypes = {
-    viewer: React.PropTypes.object.isRequired,
-    relay: React.PropTypes.object.isRequired,
-  };
+const propTypes = {
+  viewer: PropTypes.object.isRequired,
+  relay: PropTypes.object.isRequired,
+};
 
+class TodoListFooter extends React.Component {
   onClearCompletedClick = () => {
     const { relay, viewer } = this.props;
     const { todos } = viewer;
 
     relay.commitUpdate(
-      new RemoveCompletedTodosMutation({ viewer, todos })
+      new RemoveCompletedTodosMutation({ viewer, todos }),
     );
   };
 
@@ -75,9 +76,11 @@ class TodoListFooter extends React.Component {
   }
 }
 
+TodoListFooter.propTypes = propTypes;
+
 export default Relay.createContainer(TodoListFooter, {
   initialVariables: {
-    limit: -1 >>> 1,
+    limit: -1 >>> 1, // eslint-disable-line no-bitwise
   },
 
   fragments: {
