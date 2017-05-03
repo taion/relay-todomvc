@@ -1,22 +1,23 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import Relay from 'react-relay';
 
 import MarkAllTodosMutation from '../mutations/MarkAllTodosMutation';
 import Todo from './Todo';
 
-class TodoList extends React.Component {
-  static propTypes = {
-    viewer: React.PropTypes.object.isRequired,
-    relay: React.PropTypes.object.isRequired,
-  };
+const propTypes = {
+  viewer: PropTypes.object.isRequired,
+  relay: PropTypes.object.isRequired,
+};
 
+class TodoList extends React.Component {
   onToggleAllChange = (e) => {
     const { relay, viewer } = this.props;
     const { todos } = viewer;
     const complete = e.target.checked;
 
     relay.commitUpdate(
-      new MarkAllTodosMutation({ viewer, todos, complete })
+      new MarkAllTodosMutation({ viewer, todos, complete }),
     );
   };
 
@@ -58,10 +59,12 @@ class TodoList extends React.Component {
   }
 }
 
+TodoList.propTypes = propTypes;
+
 export default Relay.createContainer(TodoList, {
   initialVariables: {
     status: null,
-    limit: -1 >>> 1,
+    limit: -1 >>> 1, // eslint-disable-line no-bitwise
   },
 
   fragments: {

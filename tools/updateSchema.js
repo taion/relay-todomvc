@@ -13,11 +13,11 @@ import schema from '../src/data/schema';
 
   fs.writeFileSync(
     path.join(__dirname, '../src/data/schema.json'),
-    JSON.stringify(result, null, 2)
+    JSON.stringify(result, null, 2),
   );
 })();
 
 fs.writeFileSync(
   path.join(__dirname, '../src/data/schema.graphql'),
-  printSchema(schema)
+  printSchema(schema),
 );

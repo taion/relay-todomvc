@@ -1,5 +1,14 @@
 {
-  "presets": ["es2015-loose", "stage-1", "react"],
+  "presets": [
+    ["latest", {
+      "es2015": {
+        "loose": true,
+        "modules": false
+      }
+    }],
+    "stage-2",
+    "react"
+  ],
   "plugins": [
     "./tools/babelRelayPlugin"
   ]
