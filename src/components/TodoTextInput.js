@@ -8,6 +8,8 @@ const propTypes = {
   onCancel: PropTypes.func,
   onDelete: PropTypes.func,
   onSave: PropTypes.func.isRequired,
+  placeholder: PropTypes.string,
+  className: PropTypes.string,
 };
 
 const defaultProps = {
@@ -55,16 +57,16 @@ class TodoTextInput extends React.Component {
   }
 
   render() {
-    const { className, placeholder } = this.props;
+    const { placeholder, className } = this.props;
 
     return (
       <input
-        className={className}
-        onBlur={this.onBlur}
-        onChange={this.onChange}
         onKeyDown={this.onKeyDown}
-        placeholder={placeholder}
+        onChange={this.onChange}
+        onBlur={this.onBlur}
         value={this.state.text}
+        placeholder={placeholder}
+        className={className}
       />
     );
   }
