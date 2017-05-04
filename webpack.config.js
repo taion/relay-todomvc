@@ -26,8 +26,4 @@ module.exports = {
   ],
 
   devtool: production ? 'source-map' : 'eval-source-map',
-
-  devServer: {
-    contentBase: './build',
-  },
 };
