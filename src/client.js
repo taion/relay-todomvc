@@ -4,7 +4,7 @@ import BrowserProtocol from 'farce/lib/BrowserProtocol';
 import queryMiddleware from 'farce/lib/queryMiddleware';
 import createFarceRouter from 'found/lib/createFarceRouter';
 import createRender from 'found/lib/createRender';
-import { createResolveElements } from 'found-relay';
+import { Resolver } from 'found-relay';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Relay from 'react-relay';
@@ -35,6 +35,6 @@ const mountNode = document.createElement('div');
 document.body.appendChild(mountNode);
 
 ReactDOM.render(
-  <Router resolveElements={createResolveElements(Relay.Store)} />,
+  <Router resolver={new Resolver(Relay.Store)} />,
   mountNode,
 );
