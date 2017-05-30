@@ -3,7 +3,7 @@ import 'babel-polyfill';
 import createHashHistory from 'history/lib/createHashHistory';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Relay from 'react-relay';
+import Relay from 'react-relay/classic';
 import applyRouterMiddleware from 'react-router/lib/applyRouterMiddleware';
 import Router from 'react-router/lib/Router';
 import useRouterHistory from 'react-router/lib/useRouterHistory';

@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import Relay from 'react-relay';
+import Relay from 'react-relay/classic';
 import IndexLink from 'react-router/lib/IndexLink';
 import Link from 'react-router/lib/Link';
 
