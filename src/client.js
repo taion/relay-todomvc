@@ -7,7 +7,7 @@ import createRender from 'found/lib/createRender';
 import { Resolver } from 'found-relay';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Relay from 'react-relay';
+import Relay from 'react-relay/classic';
 import RelayLocalSchema from 'relay-local-schema';
 
 import routes from './routes';
