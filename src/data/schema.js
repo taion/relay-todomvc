@@ -63,8 +63,8 @@ const GraphQLTodo = new GraphQLObjectType({
   name: 'Todo',
   fields: {
     id: globalIdField(),
-    text: { type: GraphQLString },
     complete: { type: GraphQLBoolean },
+    text: { type: GraphQLString },
   },
   interfaces: [nodeInterface],
 });

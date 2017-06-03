@@ -1,7 +1,7 @@
 import Link from 'found/lib/Link';
 import PropTypes from 'prop-types';
 import React from 'react';
-import Relay from 'react-relay/classic';
+import { createFragmentContainer, graphql } from 'react-relay';
 
 import RemoveCompletedTodosMutation
   from '../mutations/RemoveCompletedTodosMutation';
@@ -16,46 +16,22 @@ class TodoListFooter extends React.Component {
     const { relay, viewer } = this.props;
     const { todos } = viewer;
 
-    relay.commitUpdate(
-      new RemoveCompletedTodosMutation({ viewer, todos }),
-    );
+    RemoveCompletedTodosMutation.commit(relay.environment, viewer, todos);
   };
 
-  renderRemaining() {
-    const { numTodos } = this.props.viewer;
-
-    return (
-      <span className="todo-count">
-        <strong>
-          {numTodos}
-        </strong> {numTodos === 1 ? 'item' : 'items'} left
-      </span>
-    );
-  }
-
-  renderClearCompleted() {
-    if (!this.props.viewer.numCompletedTodos) {
-      return null;
-    }
-
-    return (
-      <button
-        className="clear-completed"
-        onClick={this.onClearCompletedClick}
-      >
-        Clear completed
-      </button>
-    );
-  }
-
   render() {
+    const { numTodos, numCompletedTodos } = this.props.viewer;
     if (!this.props.viewer.numTodos) {
       return null;
     }
 
     return (
       <footer className="footer">
-        {this.renderRemaining()}
+        <span className="todo-count">
+          <strong>
+            {numTodos}
+          </strong> {numTodos === 1 ? 'item' : 'items'} left
+        </span>
 
         <ul className="filters">
           <li>
@@ -69,7 +45,14 @@ class TodoListFooter extends React.Component {
           </li>
         </ul>
 
-        {this.renderClearCompleted()}
+        {!!numCompletedTodos && (
+          <button
+            className="clear-completed"
+            onClick={this.onClearCompletedClick}
+          >
+            Clear completed
+          </button>
+        )}
       </footer>
     );
   }
@@ -77,21 +60,21 @@ class TodoListFooter extends React.Component {
 
 TodoListFooter.propTypes = propTypes;
 
-export default Relay.createContainer(TodoListFooter, {
-  initialVariables: {
-    limit: -1 >>> 1, // eslint-disable-line no-bitwise
-  },
-
-  fragments: {
-    viewer: () => Relay.QL`
-      fragment on User {
-        todos(status: "completed", first: $limit) {
-          ${RemoveCompletedTodosMutation.getFragment('todos')}
+export default createFragmentContainer(
+  TodoListFooter,
+  graphql`
+    fragment TodoListFooter_viewer on User {
+      todos(status: "completed", first: 2147483647) {
+        edges {
+          node {
+            id
+            complete
+          }
         }
-        numTodos
-        numCompletedTodos
-        ${RemoveCompletedTodosMutation.getFragment('viewer')}
       }
-    `,
-  },
-});
+      id
+      numTodos
+      numCompletedTodos
+    }
+  `,
+);

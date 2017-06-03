@@ -20,8 +20,8 @@ let nextTodoId = 0;
 export function addTodo(text, complete) {
   const todo = new Todo();
   Object.assign(todo, {
-    complete: Boolean(complete),
     id: `${nextTodoId++}`,
+    complete: Boolean(complete),
     text,
   });
 

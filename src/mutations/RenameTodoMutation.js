@@ -1,50 +1,35 @@
-import Relay from 'react-relay/classic';
+import { commitMutation, graphql } from 'react-relay';
 
-export default class RenameTodoMutation extends Relay.Mutation {
-  static fragments = {
-    todo: () => Relay.QL`
-      fragment on Todo {
+const mutation = graphql`
+  mutation RenameTodoMutation($input: RenameTodoInput!) {
+    renameTodo(input: $input) {
+      todo {
         id
+        text
       }
-    `,
-  };
-
-  getMutation() {
-    return Relay.QL`mutation{ renameTodo }`;
+    }
   }
+`;
 
-  getFatQuery() {
-    return Relay.QL`
-      fragment on RenameTodoPayload {
-        todo {
-          text
-        }
-      }
-    `;
-  }
 
-  getConfigs() {
-    return [{
-      type: 'FIELDS_CHANGE',
-      fieldIDs: {
-        todo: this.props.todo.id,
-      },
-    }];
-  }
+function commit(environment, todo, text) {
+  return commitMutation(environment, {
+    mutation,
+    variables: {
+      input: { id: todo.id, text },
+    },
 
-  getVariables() {
-    return {
-      id: this.props.todo.id,
-      text: this.props.text,
-    };
-  }
-
-  getOptimisticResponse() {
-    return {
-      todo: {
-        id: this.props.todo.id,
-        text: this.props.text,
-      },
-    };
-  }
+    optimisticResponse() {
+      return {
+        renameTodo: {
+          todo: {
+            id: todo.id,
+            text,
+          },
+        },
+      };
+    },
+  });
 }
+
+export default { commit };

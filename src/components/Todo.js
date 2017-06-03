@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import React from 'react';
-import Relay from 'react-relay/classic';
+import { createFragmentContainer, graphql } from 'react-relay';
 
 import ChangeTodoStatusMutation from '../mutations/ChangeTodoStatusMutation';
 import RemoveTodoMutation from '../mutations/RemoveTodoMutation';
@@ -27,9 +27,7 @@ class Todo extends React.Component {
     const { relay, viewer, todo } = this.props;
     const complete = e.target.checked;
 
-    relay.commitUpdate(
-      new ChangeTodoStatusMutation({ viewer, todo, complete }),
-    );
+    ChangeTodoStatusMutation.commit(relay.environment, viewer, todo, complete);
   };
 
   onDestroyClick = () => {
@@ -54,9 +52,7 @@ class Todo extends React.Component {
 
     this.setEditMode(false);
 
-    relay.commitUpdate(
-      new RenameTodoMutation({ todo, text }),
-    );
+    RenameTodoMutation.commit(relay.environment, todo, text);
   };
 
   setEditMode(isEditing) {
@@ -66,26 +62,7 @@ class Todo extends React.Component {
   removeTodo() {
     const { relay, viewer, todo } = this.props;
 
-    relay.commitUpdate(
-      new RemoveTodoMutation({ viewer, todo }),
-    );
-  }
-
-  renderTextInput() {
-    if (!this.state.isEditing) {
-      return null;
-    }
-
-    return (
-      <TodoTextInput
-        className="edit"
-        commitOnBlur
-        initialValue={this.props.todo.text}
-        onCancel={this.onTextInputCancel}
-        onDelete={this.onTextInputDelete}
-        onSave={this.onTextInputSave}
-      />
-    );
+    RemoveTodoMutation.commit(relay.environment, viewer, todo);
   }
 
   render() {
@@ -116,7 +93,16 @@ class Todo extends React.Component {
           />
         </div>
 
-        {this.renderTextInput()}
+        {!!this.state.isEditing && (
+          <TodoTextInput
+            className="edit"
+            commitOnBlur
+            initialValue={this.props.todo.text}
+            onCancel={this.onTextInputCancel}
+            onDelete={this.onTextInputDelete}
+            onSave={this.onTextInputSave}
+          />
+        )}
       </li>
     );
     /* eslint-enable jsx-a11y/label-has-for */
@@ -125,23 +111,17 @@ class Todo extends React.Component {
 
 Todo.propTypes = propTypes;
 
-export default Relay.createContainer(Todo, {
-  fragments: {
-    viewer: () => Relay.QL`
-      fragment on User {
-        ${ChangeTodoStatusMutation.getFragment('viewer')}
-        ${RemoveTodoMutation.getFragment('viewer')}
-      }
-    `,
-    todo: () => Relay.QL`
-      fragment on Todo {
-        complete
-        id
-        text
-        ${ChangeTodoStatusMutation.getFragment('todo')}
-        ${RemoveTodoMutation.getFragment('todo')}
-        ${RenameTodoMutation.getFragment('todo')}
-      }
-    `,
-  },
+export default createFragmentContainer(Todo, {
+  viewer: graphql`
+    fragment Todo_viewer on User {
+      id
+    }
+  `,
+  todo: graphql`
+    fragment Todo_todo on Todo {
+      id
+      complete
+      text
+    }
+  `,
 });

@@ -1,81 +1,91 @@
-import Relay from 'react-relay/classic';
+import { commitMutation, graphql } from 'react-relay';
+import { ConnectionHandler } from 'relay-runtime';
 
-export default class MarkAllTodosMutation extends Relay.Mutation {
-  static fragments = {
-    viewer: () => Relay.QL`
-      fragment on User {
-        id
-        numTodos
-      }
-    `,
-
-    // TODO: Mark edges and numTodos optional.
-    todos: () => Relay.QL`
-      fragment on TodoConnection {
-        edges {
-          node {
-            id
-            complete
+const mutation = graphql`
+  mutation MarkAllTodosMutation($input: MarkAllTodosInput!, $status: String!) {
+    markAllTodos(input: $input) {
+      viewer {
+        todos(status: $status) {
+          edges {
+            node {
+              id
+              complete
+              text
+            }
           }
         }
+        id
+        numCompletedTodos
       }
-    `,
-  };
-
-  getMutation() {
-    return Relay.QL`mutation{ markAllTodos }`;
-  }
-
-  getFatQuery() {
-    return Relay.QL`
-      fragment on MarkAllTodosPayload @relay(pattern: true) {
-        viewer {
-          todos
-          numCompletedTodos
-        }
+      changedTodos {
+        id
+        complete
       }
-    `;
+    }
   }
+`;
 
-  getConfigs() {
-    return [{
-      type: 'FIELDS_CHANGE',
-      fieldIDs: {
-        viewer: this.props.viewer.id,
-      },
-    }];
-  }
+function commit(environment, user, todos, complete, status) {
+  return commitMutation(environment, {
+    mutation,
+    variables: {
+      input: { complete },
+      status,
+    },
 
-  getVariables() {
-    return {
-      complete: this.props.complete,
-    };
-  }
+    updater(store) {
+      const userProxy = store.get(user.id);
+      const connection = ConnectionHandler.getConnection(
+        userProxy, 'TodoList_todos', { status },
+      );
+      const todoEdges = store
+        .getRootField('markAllTodos')
+        .getLinkedRecord('viewer')
+        .getLinkedRecord('todos', { status })
+        .getLinkedRecords('edges');
+      connection.setLinkedRecords(todoEdges, 'edges');
+    },
 
-  getOptimisticResponse() {
-    const { viewer, todos, complete } = this.props;
-    const viewerPayload = { id: viewer.id };
+    optimisticUpdater(store) {
+      const userProxy = store.get(user.id);
+      const connection = ConnectionHandler.getConnection(
+        userProxy, 'TodoList_todos', { status },
+      );
 
-    if (todos && todos.edges) {
-      viewerPayload.todos = {
-        edges: todos.edges
-          .filter(({ node }) => node.complete !== complete)
-          .map(({ node }) => ({
-            node: {
-              id: node.id,
-              complete,
-            },
-          })),
+      if (
+        (complete && status === 'active') ||
+        (!complete && status === 'completed')
+      ) {
+        connection.setLinkedRecords([], 'edges');
+      }
+    },
+
+    optimisticResponse() {
+      const payload = {
+        viewer: {
+          id: user.id,
+        },
       };
-    }
 
-    const { totalCount } = viewer;
-    if (totalCount != null) {
-      viewerPayload.completedCount = complete ? totalCount : 0;
-    }
+      if (todos && todos.edges) {
+        payload.changedTodos = todos.edges
+          .filter(({ node }) => node.complete !== complete)
+          .map(({ node }) => ({ id: node.id, complete }));
+      }
 
-    return {
-      viewer: viewerPayload,
-    };
-  }
+      if (complete) {
+        if (user.numTodos != null) {
+          payload.viewer.numCompletedTodos = user.numTodos;
+        }
+      } else {
+        payload.viewer.numCompletedTodos = 0;
+      }
+
+      return {
+        markAllTodos: payload,
+      };
+    },
+  });
 }
+
+export default { commit };
