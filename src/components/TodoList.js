@@ -42,6 +42,7 @@ class TodoList extends React.Component {
     return (
       <section className="main">
         <input
+          id="toggle-all"
           type="checkbox"
           checked={numTodos === numCompletedTodos}
           className="toggle-all"

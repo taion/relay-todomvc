@@ -1,14 +1,12 @@
-import 'babel-polyfill';
-
 import BrowserProtocol from 'farce/lib/BrowserProtocol';
 import queryMiddleware from 'farce/lib/queryMiddleware';
 import createFarceRouter from 'found/lib/createFarceRouter';
 import createRender from 'found/lib/createRender';
-import { Resolver } from 'found-relay';
+import { Resolver } from 'found-relay/lib/classic';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Relay from 'react-relay/classic';
-import RelayLocalSchema from 'relay-local-schema';
+import RelayLocalSchema from 'relay-local-schema/lib/classic';
 
 import routes from './routes';
 import schema from './data/schema';

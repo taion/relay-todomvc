@@ -4,7 +4,10 @@ const path = require('path');
 const production = process.env.NODE_ENV === 'production';
 
 module.exports = {
-  entry: './src/client',
+  entry: [
+    'babel-polyfill',
+    './src/client',
+  ],
 
   output: {
     path: path.resolve(__dirname, 'build'),
