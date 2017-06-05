@@ -1,15 +1,11 @@
 import BrowserProtocol from 'farce/lib/BrowserProtocol';
-import queryMiddleware from 'farce/lib/queryMiddleware';
-import createFarceRouter from 'found/lib/createFarceRouter';
-import createRender from 'found/lib/createRender';
-import { Resolver } from 'found-relay';
+import createInitialFarceRouter from 'found/lib/createInitialFarceRouter';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Network } from 'relay-local-schema';
-import { Environment, RecordSource, Store } from 'relay-runtime';
 
-import routes from './routes';
-import schema from './data/schema';
+import { ClientFetcher } from './fetcher';
+import { createResolver, historyMiddlewares, render, routeConfig }
+  from './router';
 
 import 'todomvc-common/base';
 import 'todomvc-common/base.css';
@@ -17,23 +13,21 @@ import 'todomvc-app-css/index.css';
 
 import './assets/learn.json';
 
-const environment = new Environment({
-  network: Network.create({ schema }),
-  store: new Store(new RecordSource()),
-});
+(async () => {
+  // eslint-disable-next-line no-underscore-dangle
+  const fetcher = new ClientFetcher('/graphql', window.__RELAY_PAYLOADS__);
+  const resolver = createResolver(fetcher);
 
-const Router = createFarceRouter({
-  historyProtocol: new BrowserProtocol(),
-  historyMiddlewares: [queryMiddleware],
-  routeConfig: routes,
+  const Router = await createInitialFarceRouter({
+    historyProtocol: new BrowserProtocol(),
+    historyMiddlewares,
+    routeConfig,
+    resolver,
+    render,
+  });
 
-  render: createRender({}),
-});
-
-const mountNode = document.createElement('div');
-document.body.appendChild(mountNode);
-
-ReactDOM.render(
-  <Router resolver={new Resolver(environment)} />,
-  mountNode,
-);
+  ReactDOM.render(
+    <Router resolver={resolver} />,
+    document.getElementById('root'),
+  );
+})();
