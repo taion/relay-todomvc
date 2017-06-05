@@ -1,4 +1,4 @@
-# relay-todomvc
+# Relay TodoMVC
 Relay TodoMVC with routing.
 
 This repo includes multiple examples on separate branches:
