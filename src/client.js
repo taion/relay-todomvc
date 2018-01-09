@@ -1,14 +1,12 @@
-import 'babel-polyfill';
-
-import createHashHistory from 'history/lib/createHashHistory';
+import HashProtocol from 'farce/lib/HashProtocol';
+import queryMiddleware from 'farce/lib/queryMiddleware';
+import createFarceRouter from 'found/lib/createFarceRouter';
+import createRender from 'found/lib/createRender';
+import { Resolver } from 'found-relay';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Relay from 'react-relay/classic';
-import applyRouterMiddleware from 'react-router/lib/applyRouterMiddleware';
-import Router from 'react-router/lib/Router';
-import useRouterHistory from 'react-router/lib/useRouterHistory';
-import useRelay from 'react-router-relay';
-import RelayLocalSchema from 'relay-local-schema';
+import { Network } from 'relay-local-schema';
+import { Environment, RecordSource, Store } from 'relay-runtime';
 
 import routes from './routes';
 import schema from './data/schema';
@@ -19,21 +17,20 @@ import 'todomvc-app-css/index.css';
 
 import './assets/learn.json';
 
-Relay.injectNetworkLayer(
-  new RelayLocalSchema.NetworkLayer({ schema }),
-);
+const environment = new Environment({
+  network: Network.create({ schema }),
+  store: new Store(new RecordSource()),
+});
 
-const history = useRouterHistory(createHashHistory)({ queryKey: false });
+const Router = createFarceRouter({
+  historyProtocol: new HashProtocol(),
+  historyMiddlewares: [queryMiddleware],
+  routeConfig: routes,
+
+  render: createRender({}),
+});
 
 const mountNode = document.createElement('div');
 document.body.appendChild(mountNode);
 
-ReactDOM.render(
-  <Router
-    history={history}
-    routes={routes}
-    render={applyRouterMiddleware(useRelay)}
-    environment={Relay.Store}
-  />,
-  mountNode,
-);
+ReactDOM.render(<Router resolver={new Resolver(environment)} />, mountNode);

@@ -1,26 +1,36 @@
+import makeRouteConfig from 'found/lib/makeRouteConfig';
+import Route from 'found/lib/Route';
 import React from 'react';
-import IndexRoute from 'react-router/lib/IndexRoute';
-import Route from 'react-router/lib/Route';
+import { graphql } from 'react-relay';
 
 import TodoApp from './components/TodoApp';
 import TodoList from './components/TodoList';
-import ViewerQueries from './queries/ViewerQueries';
 
-export default (
+const TodoListQuery = graphql`
+  query routes_TodoList_Query($status: String!) {
+    viewer {
+      ...TodoList_viewer
+    }
+  }
+`;
+
+export default makeRouteConfig(
   <Route
     path="/"
-    component={TodoApp}
-    queries={ViewerQueries}
+    Component={TodoApp}
+    query={graphql`
+      query routes_TodoApp_Query {
+        viewer {
+          ...TodoApp_viewer
+        }
+      }
+    `}
   >
-    <IndexRoute
-      component={TodoList}
-      queries={ViewerQueries}
-      prepareParams={params => ({ ...params, status: 'any' })}
-    />
     <Route
-      path=":status"
-      component={TodoList}
-      queries={ViewerQueries}
+      Component={TodoList}
+      query={TodoListQuery}
+      prepareVariables={params => ({ ...params, status: 'any' })}
     />
-  </Route>
+    <Route path=":status" Component={TodoList} query={TodoListQuery} />
+  </Route>,
 );

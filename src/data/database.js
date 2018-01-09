@@ -20,8 +20,8 @@ let nextTodoId = 0;
 export function addTodo(text, complete) {
   const todo = new Todo();
   Object.assign(todo, {
-    complete: Boolean(complete),
     id: `${nextTodoId++}`,
+    complete: Boolean(complete),
     text,
   });
 
@@ -63,7 +63,7 @@ export function getViewer() {
 
 export function markAllTodos(complete) {
   const changedTodos = [];
-  getTodos().forEach((todo) => {
+  getTodos().forEach(todo => {
     if (todo.complete !== complete) {
       /* eslint-disable no-param-reassign */
       todo.complete = complete;

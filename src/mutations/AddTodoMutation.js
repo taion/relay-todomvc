@@ -1,67 +1,77 @@
-import Relay from 'react-relay/classic';
+import { commitMutation, graphql } from 'react-relay';
+import { ConnectionHandler } from 'relay-runtime';
 
-export default class AddTodoMutation extends Relay.Mutation {
-  static fragments = {
-    viewer: () => Relay.QL`
-      fragment on User {
+const mutation = graphql`
+  mutation AddTodoMutation($input: AddTodoInput!) {
+    addTodo(input: $input) {
+      viewer {
         id
         numTodos
       }
-    `,
-  };
-
-  getMutation() {
-    return Relay.QL`mutation{ addTodo }`;
-  }
-
-  getFatQuery() {
-    return Relay.QL`
-      fragment on AddTodoPayload @relay(pattern: true) {
-        viewer {
-          todos
-          numTodos
+      todoEdge {
+        cursor
+        node {
+          id
+          complete
+          text
         }
-        todoEdge
       }
-    `;
+    }
   }
+`;
 
-  getConfigs() {
-    return [{
-      type: 'RANGE_ADD',
-      parentName: 'viewer',
-      parentID: this.props.viewer.id,
-      connectionName: 'todos',
-      edgeName: 'todoEdge',
-      rangeBehaviors: ({ status }) => (
-        status === 'completed' ? 'ignore' : 'append'
-      ),
-    }];
-  }
+function sharedUpdater(store, user, todoEdge) {
+  const userProxy = store.get(user.id);
 
-  getVariables() {
-    return {
-      text: this.props.text,
-    };
-  }
-
-  getOptimisticResponse() {
-    const { viewer, text } = this.props;
-
-    return {
-      viewer: {
-        id: viewer.id,
-        numTodos: viewer.numTodos + 1,
-      },
-
-      // FIXME: numTodos gets updated optimistically, but this edge does not
-      // get added until the server responds.
-      todoEdge: {
-        node: {
-          complete: false,
-          text,
-        },
-      },
-    };
-  }
+  ['any', 'active'].forEach(status => {
+    const connection = ConnectionHandler.getConnection(
+      userProxy,
+      'TodoList_todos',
+      { status },
+    );
+    if (connection) {
+      ConnectionHandler.insertEdgeAfter(connection, todoEdge);
+    }
+  });
 }
+
+let nextClientMutationId = 0;
+
+function commit(environment, user, text) {
+  const clientMutationId = nextClientMutationId++;
+
+  return commitMutation(environment, {
+    mutation,
+    variables: {
+      input: { text, clientMutationId },
+    },
+
+    updater(store) {
+      const payload = store.getRootField('addTodo');
+      sharedUpdater(store, user, payload.getLinkedRecord('todoEdge'));
+    },
+
+    optimisticUpdater(store) {
+      const id = `client:addTodo:Todo:${clientMutationId}`;
+      const todo = store.create(id, 'Todo');
+      todo.setValue(text, 'text');
+      todo.setValue(id, 'id');
+
+      const todoEdge = store.create(
+        `client:addTodo:TodoEdge:${clientMutationId}`,
+        'TodoEdge',
+      );
+      todoEdge.setLinkedRecord(todo, 'node');
+
+      sharedUpdater(store, user, todoEdge);
+
+      const userProxy = store.get(user.id);
+      const numTodos = userProxy.getValue('numTodos');
+      if (numTodos != null) {
+        userProxy.setValue(numTodos + 1, 'numTodos');
+      }
+    },
+  });
+}
+
+export default { commit };

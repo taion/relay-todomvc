@@ -112,8 +112,8 @@ type Root {
 type Todo implements Node {
   # The ID of an object
   id: ID!
-  text: String
   complete: Boolean
+  text: String
 }
 
 # A connection to a list of items.

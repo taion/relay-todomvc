@@ -38,7 +38,7 @@ import {
 /* eslint-disable no-use-before-define */
 
 const { nodeInterface, nodeField } = nodeDefinitions(
-  (globalId) => {
+  globalId => {
     const { type, id } = fromGlobalId(globalId);
     if (type === 'Todo') {
       return getTodo(id);
@@ -48,7 +48,7 @@ const { nodeInterface, nodeField } = nodeDefinitions(
     }
     return null;
   },
-  (obj) => {
+  obj => {
     if (obj instanceof Todo) {
       return GraphQLTodo;
     }
@@ -63,14 +63,16 @@ const GraphQLTodo = new GraphQLObjectType({
   name: 'Todo',
   fields: {
     id: globalIdField(),
-    text: { type: GraphQLString },
     complete: { type: GraphQLBoolean },
+    text: { type: GraphQLString },
   },
   interfaces: [nodeInterface],
 });
 
-const { connectionType: TodosConnection, edgeType: GraphQLTodoEdge } =
-  connectionDefinitions({ nodeType: GraphQLTodo });
+const {
+  connectionType: TodosConnection,
+  edgeType: GraphQLTodoEdge,
+} = connectionDefinitions({ nodeType: GraphQLTodo });
 
 const GraphQLUser = new GraphQLObjectType({
   name: 'User',
@@ -85,9 +87,8 @@ const GraphQLUser = new GraphQLObjectType({
         },
         ...connectionArgs,
       },
-      resolve: (obj, { status, ...args }) => (
-        connectionFromArray(getTodos(status), args)
-      ),
+      resolve: (obj, { status, ...args }) =>
+        connectionFromArray(getTodos(status), args),
     },
     numTodos: {
       type: GraphQLInt,

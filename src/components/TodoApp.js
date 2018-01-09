@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import Relay from 'react-relay/classic';
+import { createFragmentContainer, graphql } from 'react-relay';
 
 import AddTodoMutation from '../mutations/AddTodoMutation';
 import TodoListFooter from './TodoListFooter';
@@ -13,12 +13,10 @@ const propTypes = {
 };
 
 class TodoApp extends React.Component {
-  onNewTodoSave = (text) => {
+  onNewTodoSave = text => {
     const { relay, viewer } = this.props;
 
-    relay.commitUpdate(
-      new AddTodoMutation({ viewer, text }),
-    );
+    AddTodoMutation.commit(relay.environment, viewer, text);
   };
 
   render() {
@@ -45,13 +43,13 @@ class TodoApp extends React.Component {
         <footer className="info">
           <p>Double-click to edit a todo</p>
           <p>
-            Adapted by <a href="http://fashionablenonsense.com/">
-              @jimmy_jia
-            </a> from work by the <a href="https://facebook.github.io/relay/">
-              Relay team
-            </a>
+            Adapted by <a href="http://fashionablenonsense.com/">@jimmy_jia</a>{' '}
+            from work by the{' '}
+            <a href="https://facebook.github.io/relay/">Relay team</a>
           </p>
-          <p>Part of <a href="http://todomvc.com">TodoMVC</a></p>
+          <p>
+            Part of <a href="http://todomvc.com">TodoMVC</a>
+          </p>
         </footer>
       </div>
     );
@@ -60,13 +58,12 @@ class TodoApp extends React.Component {
 
 TodoApp.propTypes = propTypes;
 
-export default Relay.createContainer(TodoApp, {
-  fragments: {
-    viewer: () => Relay.QL`
-      fragment on User {
-        ${TodoListFooter.getFragment('viewer')}
-        ${AddTodoMutation.getFragment('viewer')}
-      }
-    `,
-  },
-});
+export default createFragmentContainer(
+  TodoApp,
+  graphql`
+    fragment TodoApp_viewer on User {
+      id
+      ...TodoListFooter_viewer
+    }
+  `,
+);

@@ -26,5 +26,8 @@ build/Release
 # https://www.npmjs.org/doc/misc/npm-faq.html#should-i-check-my-node_modules-folder-into-git
 node_modules
 
-# Webpack output
-build
+# Build output.
+/build
+
+# Generated files.
+__generated__

@@ -1,83 +1,69 @@
-import Relay from 'react-relay/classic';
+import { commitMutation, graphql } from 'react-relay';
+import { ConnectionHandler } from 'relay-runtime';
 
-export default class RemoveCompletedTodosMutation extends Relay.Mutation {
-  static fragments = {
-    viewer: () => Relay.QL`
-      fragment on User {
-        id
+const mutation = graphql`
+  mutation RemoveCompletedTodosMutation($input: RemoveCompletedTodosInput!) {
+    removeCompletedTodos(input: $input) {
+      viewer {
         numTodos
         numCompletedTodos
       }
-    `,
-
-    // TODO: Make edges, numTodos, and numCompletedTodos optional.
-    todos: () => Relay.QL`
-      fragment on TodoConnection {
-        edges {
-          node {
-            id
-            complete
-          }
-        }
-      }
-    `,
-  };
-
-  getMutation() {
-    return Relay.QL`mutation{ removeCompletedTodos }`;
-  }
-
-  getFatQuery() {
-    return Relay.QL`
-      fragment on RemoveCompletedTodosPayload {
-        viewer {
-          numTodos
-          numCompletedTodos
-        }
-        deletedIds
-      }
-    `;
-  }
-
-  getConfigs() {
-    return [{
-      type: 'NODE_DELETE',
-      parentName: 'viewer',
-      parentID: this.props.viewer.id,
-      connectionName: 'todos',
-      deletedIDFieldName: 'deletedIds',
-    }];
-  }
-
-  getVariables() {
-    return {};
-  }
-
-  getOptimisticResponse() {
-    const { viewer, todos } = this.props;
-
-    const { numTodos, numCompletedTodos } = viewer;
-    let newNumTodos;
-    if (numTodos != null && numCompletedTodos != null) {
-      newNumTodos = numTodos - numCompletedTodos;
+      deletedIds
     }
+  }
+`;
 
-    let deletedIds;
-    if (todos) {
-      if (todos.edges) {
+function sharedUpdater(store, user, deletedIds) {
+  const userProxy = store.get(user.id);
+
+  ['any', 'completed'].forEach(status => {
+    const connection = ConnectionHandler.getConnection(
+      userProxy,
+      'TodoList_todos',
+      { status },
+    );
+    if (connection) {
+      deletedIds.forEach(deletedId => {
+        ConnectionHandler.deleteNode(connection, deletedId);
+      });
+    }
+  });
+}
+
+function commit(environment, user, todos) {
+  return commitMutation(environment, {
+    mutation,
+    variables: {
+      input: {},
+    },
+
+    updater(store) {
+      const payload = store.getRootField('removeCompletedTodos');
+      sharedUpdater(store, user, payload.getValue('deletedIds'));
+    },
+
+    optimisticUpdater(store) {
+      const userProxy = store.get(user.id);
+
+      let deletedIds;
+      if (todos && todos.edges) {
         deletedIds = todos.edges
           .filter(({ node }) => node.complete)
           .map(({ node }) => node.id);
+        sharedUpdater(store, user, deletedIds);
       }
-    }
 
-    return {
-      viewer: {
-        id: viewer.id,
-        numTodos: newNumTodos,
-        numCompletedTodos: 0,
-      },
-      deletedIds,
-    };
-  }
+      const numTodos = userProxy.getValue('numTodos');
+      if (deletedIds) {
+        userProxy.setValue(numTodos - deletedIds.length, 'numTodos');
+      } else {
+        const numCompletedTodos = userProxy.getValue('numCompletedTodos');
+        userProxy.setValue(numTodos - numCompletedTodos, 'numTodos');
+      }
+
+      userProxy.setValue(0, 'numCompletedTodos');
+    },
+  });
 }
+
+export default { commit };
