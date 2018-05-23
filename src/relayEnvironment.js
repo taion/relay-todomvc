@@ -10,7 +10,7 @@ export function createRelayEnvironment(cache) {
 
   const relaySSRMiddleware = isServer
     ? new RelayServerSSR()
-    : new RelayClientSSR(cache); // eslint-disable-line
+    : new RelayClientSSR(cache);
 
   relaySSRMiddleware.debug = false;
 
