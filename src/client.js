@@ -7,13 +7,6 @@ import ReactDOM from 'react-dom';
 import { createRelayEnvironment } from './relayEnvironment';
 import { historyMiddlewares, render, routeConfig } from './router';
 
-import {
-  createResolver,
-  historyMiddlewares,
-  render,
-  routeConfig,
-} from './router';
-
 import 'todomvc-common/base';
 
 (async () => {

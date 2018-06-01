@@ -2,7 +2,6 @@
   "private": true,
   "scripts": {
     "lint": "eslint *.js src tools",
-    "postinstall": "cd node_modules/react-relay-network-modern-ssr && yarn build-lib",
     "relay-compiler": "relay-compiler --src src --exclude 'data/**' --schema src/data/schema.graphql",
     "start": "npm run relay-compiler && babel-node index.js",
     "update-schema": "babel-node tools/updateSchema.js"
@@ -49,7 +48,6 @@
     "friendly-errors-webpack-plugin": "^1.7.0",
     "graphql": "^0.13.2",
     "graphql-relay": "^0.5.5",
-    "isomorphic-fetch": "^2.2.1",
     "husky": "^0.14.3",
     "isomorphic-fetch": "^2.2.1",
     "keycode": "^2.2.0",
