@@ -10,15 +10,6 @@ import TodoList from './components/TodoList';
 
 export const historyMiddlewares = [queryMiddleware];
 
-export function createResolver(fetcher) {
-  const environment = new Environment({
-    network: Network.create((...args) => fetcher.fetch(...args)),
-    store: new Store(new RecordSource()),
-  });
-
-  return new Resolver(environment);
-}
-
 const TodoListQuery = graphql`
   query router_TodoList_Query($status: String!) {
     viewer {

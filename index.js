@@ -1,9 +1,8 @@
-import { createReloadable } from '@artsy/express-reloadable';
 import CopyWebpackPlugin from 'copy-webpack-plugin';
 import FriendlyErrorsWebpackPlugin from 'friendly-errors-webpack-plugin';
 import express from 'express';
 import graphQLHTTP from 'express-graphql';
-import path from 'path';
+import server from './src/server';
 import webpack from 'webpack';
 import webpackMiddleware from 'webpack-dev-middleware';
 
@@ -14,9 +13,7 @@ const PORT = 8080;
 const app = express();
 
 app.use('/graphql', graphQLHTTP({ schema }));
-
-const mountAndReload = createReloadable(app, require);
-mountAndReload(path.resolve(__dirname, './src'));
+app.use(server);
 
 const webpackConfig = {
   mode: 'development',

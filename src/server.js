@@ -36,17 +36,14 @@ app.get('/', async (req, res) => {
       res.status(status).send(`
       <!DOCTYPE html>
       <html>
-
       <head>
         <meta charset="utf-8">
         <title>Relay • TodoMVC</title>
         <link rel="stylesheet" href="base.css">
         <link rel="stylesheet" href="index.css">
       </head>
-
       <body>
       <div id="root">${html}</div>
-
       <script>
         window.__RELAY_PAYLOADS__ = ${serialize(JSON.stringify(relayData), {
           isJSON: true,
@@ -54,7 +51,6 @@ app.get('/', async (req, res) => {
       </script>
       <script src="/bundle.js"></script>
       </body>
-
       </html>
     `);
     }, 0);
