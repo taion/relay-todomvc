@@ -15,8 +15,8 @@ const propTypes = {
 };
 
 class Todo extends React.Component {
-  constructor(props, context) {
-    super(props, context);
+  constructor(props) {
+    super(props);
 
     this.state = {
       isEditing: false,
