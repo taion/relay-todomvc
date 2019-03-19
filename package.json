@@ -54,7 +54,7 @@
     "prop-types": "^15.6.2",
     "react": "^16.5.0",
     "react-dom": "^16.5.0",
-    "react-relay": "^1.6.2",
+    "react-relay": "^3.0.0",
     "relay-compiler": "^1.6.2",
     "relay-local-schema": "^0.7.0",
     "relay-runtime": "^1.6.2",
