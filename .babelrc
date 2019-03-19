@@ -6,6 +6,6 @@
     }]
   ],
   "plugins": [
-    ["relay", { "schema": "src/data/schema.graphql" }]
+    "relay"
   ]
 }
