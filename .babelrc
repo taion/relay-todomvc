@@ -1,8 +1,9 @@
 {
   "presets": [
-    "./tools/envPreset",
-    "stage-2",
-    "react"
+    ["@4c", {
+      "target": "web-app",
+      "useBuiltIns": "usage"
+    }]
   ],
   "plugins": [
     ["relay", { "schema": "src/data/schema.graphql" }]
