@@ -3,7 +3,7 @@
   "scripts": {
     "build": "npm run update-schema && npm run relay-compiler && npm run webpack",
     "lint": "eslint *.js src tools",
-    "relay-compiler": "relay-compiler --src src --exclude 'data/**' --schema src/data/schema.graphql",
+    "relay-compiler": "relay-compiler --watchman false --src src --exclude 'data/**' --schema src/data/schema.graphql",
     "start": "npm run relay-compiler && webpack-dev-server --mode development --hot",
     "update-schema": "cross-env NODE_ENV=test babel-node tools/updateSchema.js",
     "webpack": "BABEL_ENV=production webpack --mode production"
