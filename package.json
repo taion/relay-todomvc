@@ -60,7 +60,7 @@
     "react-relay": "^3.0.0",
     "react-relay-network-modern": "^2.5.2",
     "react-relay-network-modern-ssr": "1.2.2",
-    "regenerator-runtime": "^0.12.1",
+    "regenerator-runtime": "^0.13.2",
     "relay-compiler": "^3.0.0",
     "relay-runtime": "^3.0.0",
     "serialize-javascript": "^1.6.1",
