@@ -1367,14 +1367,6 @@ babel-preset-fbjs@^3.1.2:
     "@babel/plugin-transform-template-literals" "^7.0.0"
     babel-plugin-syntax-trailing-function-commas "^7.0.0-beta.0"
 
-babel-runtime@^6.26.0:
-  version "6.26.0"
-  resolved "https://registry.yarnpkg.com/babel-runtime/-/babel-runtime-6.26.0.tgz#965c7058668e82b55d7bfe04ff2337bc8b5647fe"
-  integrity sha1-llxwWGaOgrVde/4E/yM3vItWR/4=
-  dependencies:
-    core-js "^2.4.0"
-    regenerator-runtime "^0.11.0"
-
 balanced-match@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/balanced-match/-/balanced-match-1.0.0.tgz#89b4d199ab2bee49de164ea02b89ce462d71b767"
@@ -2003,7 +1995,7 @@ core-js@3.0.0, core-js@^3.0.0:
   resolved "https://registry.yarnpkg.com/core-js/-/core-js-3.0.0.tgz#a8dbfa978d29bfc263bfb66c556d0ca924c28957"
   integrity sha512-WBmxlgH2122EzEJ6GH8o9L/FeoUKxxxZ6q6VUxoTlsE4EvbTWKJb447eyVxTEuq0LpXjlq/kCB2qgBvsYRkLvQ==
 
-core-js@^2.4.0, core-js@^2.4.1, core-js@^2.6.5:
+core-js@^2.4.1, core-js@^2.6.5:
   version "2.6.5"
   resolved "https://registry.yarnpkg.com/core-js/-/core-js-2.6.5.tgz#44bc8d249e7fb2ff5d00e0341a7ffb94fbf67895"
   integrity sha512-klh/kDpwX8hryYL14M9w/xei6vrv6sE8gTHDG7/T/+SEovB/G4ejwcfE/CBzO6Edsu+OETZMZ3wcX/EjUkrl5A==
@@ -2915,7 +2907,7 @@ extglob@^2.0.4:
     snapdragon "^0.8.1"
     to-regex "^3.0.1"
 
-farce@^0.2.7, farce@^0.2.8:
+farce@^0.2.8:
   version "0.2.8"
   resolved "https://registry.yarnpkg.com/farce/-/farce-0.2.8.tgz#bd9c5343b5970357d9446d43212a2036f27886ed"
   integrity sha512-x4N70Ti9nOo6/waNJUZMLDd/U6+WA0gV+AUE1gFS/npD/FliTUCKbBLNQYbgeejzDdw0MgtPCCjRX8kPTHjspA==
@@ -3142,13 +3134,13 @@ found-relay@^0.4.0-alpha.6:
     prop-types "^15.7.2"
     warning "^4.0.3"
 
-found@^0.4.0-alpha.8:
-  version "0.4.0-alpha.8"
-  resolved "https://registry.yarnpkg.com/found/-/found-0.4.0-alpha.8.tgz#f4b16f12e416369715ef96c8a6be9c9856b2a82d"
-  integrity sha512-RFPoX8CuSm8d+8AWPcHipt6CLLWLxqxg6iwxdBCuge1nYeGSmdTKLgtxkC75Dl1AQ4ul6LZL9rSnFmi54REfog==
+found@^0.4.0-alpha.9:
+  version "0.4.0-alpha.9"
+  resolved "https://registry.yarnpkg.com/found/-/found-0.4.0-alpha.9.tgz#3dd73cdb3bd63e2abca71e29ef45d1abe68d6c8d"
+  integrity sha512-Wmx7apjIo9o+hSObeR9HXdfnqEbqHAcxaiff9J/NsdBurW9DYuCb8lznzvRPLPU45WkW71FD93txUz8G9cavQg==
   dependencies:
-    babel-runtime "^6.26.0"
-    farce "^0.2.7"
+    "@babel/runtime-corejs2" "^7.4.0"
+    farce "^0.2.8"
     is-promise "^2.1.0"
     lodash "^4.17.11"
     path-to-regexp "^1.7.0"
@@ -5709,11 +5701,6 @@ regenerate@^1.4.0:
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/regenerate/-/regenerate-1.4.0.tgz#4a856ec4b56e4077c557589cae85e7a4c8869a11"
   integrity sha512-1G6jJVDWrt0rK99kBjvEtziZNCICAuvIPkSiUFIQxVP06RCVpq3dmDo2oi6ABpYaDYaTRr67BEhL8r1wgEZZKg==
-
-regenerator-runtime@^0.11.0:
-  version "0.11.1"
-  resolved "https://registry.yarnpkg.com/regenerator-runtime/-/regenerator-runtime-0.11.1.tgz#be05ad7f9bf7d22e056f9726cee5017fbf19e2e9"
-  integrity sha512-MguG95oij0fC3QV3URf4V2SDYGJhJnJGqvIIgdECeODCT98wSWDAJ94SSuVpYQUoTcGUIL6L4yNB7j1DFFHSBg==
 
 regenerator-runtime@^0.12.0:
   version "0.12.1"
