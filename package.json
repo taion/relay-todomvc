@@ -26,7 +26,7 @@
     "trailingComma": "all"
   },
   "dependencies": {
-    "@4c/babel-preset": "^5.0.4",
+    "@4c/babel-preset": "^5.1.0",
     "@babel/cli": "^7.2.3",
     "@babel/core": "^7.4.0",
     "@babel/node": "^7.2.2",
