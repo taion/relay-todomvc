@@ -56,7 +56,7 @@
     "prettier": "^1.16.4",
     "prop-types": "^15.7.2",
     "react": "^16.8.5",
-    "react-dom": "^16.8.5",
+    "react-dom": "^16.8.6",
     "react-relay": "^3.0.0",
     "react-relay-network-modern": "^2.5.2",
     "react-relay-network-modern-ssr": "1.2.2",
