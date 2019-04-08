@@ -3148,10 +3148,10 @@ forwarded@~0.1.2:
   resolved "https://registry.yarnpkg.com/forwarded/-/forwarded-0.1.2.tgz#98c23dab1175657b8c0573e8ceccd91b0ff18c84"
   integrity sha1-mMI9qxF1ZXuMBXPozszZGw/xjIQ=
 
-found-relay@^0.4.0-alpha.6:
-  version "0.4.0-alpha.6"
-  resolved "https://registry.yarnpkg.com/found-relay/-/found-relay-0.4.0-alpha.6.tgz#9f834fb8ce8653405e957d30d53cc1b9fd706c61"
-  integrity sha512-G4oxx8hkFJpfGmIfBaG87qaI9Bx4y9H7qEqGZxX7pHGyMGNFpT/ajrY2BUQiWDG8SpYKxBTetMxEHhQ9676pXQ==
+found-relay@^0.4.0-alpha.7:
+  version "0.4.0-alpha.7"
+  resolved "https://registry.yarnpkg.com/found-relay/-/found-relay-0.4.0-alpha.7.tgz#8b682684eb56a5ecedef7fa73b8610d98171f264"
+  integrity sha512-GyBWDXGAyWwZS5W64b49PqdRyh7w/L4E+ypB5Er22aUTWQWAozSqcgt2Mpb9AO//mFdSHfE+Dm86mmSUJ4lmww==
   dependencies:
     "@babel/runtime-corejs2" "^7.4.0"
     is-promise "^2.1.0"
