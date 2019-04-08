@@ -2881,10 +2881,10 @@ forwarded@~0.1.2:
   resolved "https://registry.yarnpkg.com/forwarded/-/forwarded-0.1.2.tgz#98c23dab1175657b8c0573e8ceccd91b0ff18c84"
   integrity sha1-mMI9qxF1ZXuMBXPozszZGw/xjIQ=
 
-found-relay@^0.4.0-alpha.6:
-  version "0.4.0-alpha.6"
-  resolved "https://registry.yarnpkg.com/found-relay/-/found-relay-0.4.0-alpha.6.tgz#9f834fb8ce8653405e957d30d53cc1b9fd706c61"
-  integrity sha512-G4oxx8hkFJpfGmIfBaG87qaI9Bx4y9H7qEqGZxX7pHGyMGNFpT/ajrY2BUQiWDG8SpYKxBTetMxEHhQ9676pXQ==
+found-relay@^0.4.0-alpha.7:
+  version "0.4.0-alpha.7"
+  resolved "https://registry.yarnpkg.com/found-relay/-/found-relay-0.4.0-alpha.7.tgz#8b682684eb56a5ecedef7fa73b8610d98171f264"
+  integrity sha512-GyBWDXGAyWwZS5W64b49PqdRyh7w/L4E+ypB5Er22aUTWQWAozSqcgt2Mpb9AO//mFdSHfE+Dm86mmSUJ4lmww==
   dependencies:
     "@babel/runtime-corejs2" "^7.4.0"
     is-promise "^2.1.0"
@@ -5048,10 +5048,10 @@ react-relay-network-modern-ssr@1.2.2:
   resolved "https://registry.yarnpkg.com/react-relay-network-modern-ssr/-/react-relay-network-modern-ssr-1.2.2.tgz#9f611872113cc91839600939b0d4edf97a4f8adc"
   integrity sha512-35SHsvHS6IhZ7Sh9qXwjMhC5nZHhv5P9ERS5oti9u/B6GsQEC3cTwVCeSKIJNs+SxWkwQ6Z7DmzhPMWu1sNI0Q==
 
-react-relay-network-modern@^2.5.2:
-  version "2.5.2"
-  resolved "https://registry.yarnpkg.com/react-relay-network-modern/-/react-relay-network-modern-2.5.2.tgz#623f0066c8c8352f6adf3f283621833b989f9dcd"
-  integrity sha512-cPLJ/N1OqBV9ZPp8rhkliCkMx2S/y7EvDTpvsFs7TbfOrrqndNm3zlBWjlgrkGCfHS5T8hQsl/SWAAnUBWs49g==
+react-relay-network-modern@^2.6.0:
+  version "2.7.0"
+  resolved "https://registry.yarnpkg.com/react-relay-network-modern/-/react-relay-network-modern-2.7.0.tgz#4436e5122125fadd2a408fa5b55716414e8c3fa4"
+  integrity sha512-MsqTkvdWUoZcHjpqZzY7vaVFD2gWV0DbC+WGNqZ6RzDAkSG41u5WO4hBTFzElhXxiNPZ/cLf4hg9Q4anz/1NRA==
 
 react-relay@^3.0.0:
   version "3.0.0"
@@ -6183,10 +6183,10 @@ watchpack@^1.5.0:
     graceful-fs "^4.1.2"
     neo-async "^2.5.0"
 
-webpack-dev-middleware@^3.6.1:
-  version "3.6.1"
-  resolved "https://registry.yarnpkg.com/webpack-dev-middleware/-/webpack-dev-middleware-3.6.1.tgz#91f2531218a633a99189f7de36045a331a4b9cd4"
-  integrity sha512-XQmemun8QJexMEvNFbD2BIg4eSKrmSIMrTfnl2nql2Sc6OGAYFyb8rwuYrCjl/IiEYYuyTEiimMscu7EXji/Dw==
+webpack-dev-middleware@^3.6.2:
+  version "3.6.2"
+  resolved "https://registry.yarnpkg.com/webpack-dev-middleware/-/webpack-dev-middleware-3.6.2.tgz#f37a27ad7c09cd7dc67cd97655413abaa1f55942"
+  integrity sha512-A47I5SX60IkHrMmZUlB0ZKSWi29TZTcPz7cha1Z75yYOsgWh/1AcPmQEbC8ZIbU3A1ytSv1PMU0PyPz2Lmz2jg==
   dependencies:
     memory-fs "^0.4.1"
     mime "^2.3.1"
