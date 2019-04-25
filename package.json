@@ -33,7 +33,7 @@
     "babel-loader": "^8.0.5",
     "babel-plugin-relay": "^3.0.0",
     "classnames": "^2.2.6",
-    "copy-webpack-plugin": "^5.0.2",
+    "copy-webpack-plugin": "^5.0.3",
     "css-loader": "^2.1.1",
     "eslint": "^5.16.0",
     "eslint-config-4catalyzer-react": "^0.9.3",
