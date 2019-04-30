@@ -62,7 +62,7 @@
     "react-relay-network-modern-ssr": "1.2.2",
     "regenerator-runtime": "^0.13.2",
     "relay-compiler": "^3.0.0",
-    "relay-runtime": "^3.0.0",
+    "relay-runtime": "^4.0.0",
     "serialize-javascript": "^1.6.1",
     "todomvc-app-css": "^2.2.0",
     "todomvc-common": "^1.0.5",
