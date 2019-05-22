@@ -65,7 +65,7 @@
     "style-loader": "^0.23.1",
     "todomvc-app-css": "^2.2.0",
     "todomvc-common": "^1.0.5",
-    "webpack": "^4.32.0",
+    "webpack": "^4.32.1",
     "webpack-cli": "^3.3.2",
     "webpack-dev-server": "^3.4.1"
   }
