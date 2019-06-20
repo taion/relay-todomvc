@@ -2865,10 +2865,10 @@ found-relay@^0.4.0-alpha.9:
     prop-types "^15.7.2"
     warning "^4.0.3"
 
-found@^0.4.0-alpha.17:
-  version "0.4.0-alpha.17"
-  resolved "https://registry.yarnpkg.com/found/-/found-0.4.0-alpha.17.tgz#2996a6ff997c74dbddb1f124b92ffbd2acd3ff4a"
-  integrity sha512-Q0VpXjcXYel4FS0hHtpLppmZ2zO/SfUICkV1yxfgr2sGzOeWuHnyRCxTpaxZLjWIqcA03VVFgSAT32B4U4TRlw==
+found@^0.4.1:
+  version "0.4.1"
+  resolved "https://registry.yarnpkg.com/found/-/found-0.4.1.tgz#a69b0169fc02b29424acff0a8a20f6bbaddf45a0"
+  integrity sha512-4/dRli/V8gCK1t2TAUt3Qmh3dBS4a0idn0jsx45TbzVLr6MyfLHRawKqsTJ67XXxmDASUY++6tD2zqTaIUbCRg==
   dependencies:
     "@babel/runtime-corejs2" "^7.4.4"
     "@restart/context" "^2.1.4"
