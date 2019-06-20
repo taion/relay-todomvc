@@ -4978,10 +4978,10 @@ react-redux@^7.0.0:
     prop-types "^15.7.2"
     react-is "^16.8.6"
 
-react-relay-network-modern-ssr@1.2.2:
-  version "1.2.2"
-  resolved "https://registry.yarnpkg.com/react-relay-network-modern-ssr/-/react-relay-network-modern-ssr-1.2.2.tgz#9f611872113cc91839600939b0d4edf97a4f8adc"
-  integrity sha512-35SHsvHS6IhZ7Sh9qXwjMhC5nZHhv5P9ERS5oti9u/B6GsQEC3cTwVCeSKIJNs+SxWkwQ6Z7DmzhPMWu1sNI0Q==
+react-relay-network-modern-ssr@1.2.3:
+  version "1.2.3"
+  resolved "https://registry.yarnpkg.com/react-relay-network-modern-ssr/-/react-relay-network-modern-ssr-1.2.3.tgz#37a2beb122d4d2fbdea427720fdfcd5e566fe21c"
+  integrity sha512-k8JNWZpGB3uLXLr+nzvY1RH4fY2/TP/1KJumK+5G//PeSl2iPVfPt+lKD5uULSobRN/FbvV9pDWY2Q3lAbnQoQ==
 
 react-relay-network-modern@^2.6.0:
   version "2.7.0"
