@@ -5163,10 +5163,10 @@ react-relay-network-modern-ssr@1.2.4:
   resolved "https://registry.yarnpkg.com/react-relay-network-modern-ssr/-/react-relay-network-modern-ssr-1.2.4.tgz#3d55ee9e9ed7ed07a2c7c56fc274eba3114777e1"
   integrity sha512-WG7QunjWP1zv7hp+sOwpeAtqCt5mukxdtqvoFAoK9BOjAwlovBLVwX4fj3q859VEN6HM4e2GLRhkkfrsOwM6jQ==
 
-react-relay-network-modern@^2.6.0:
-  version "2.7.0"
-  resolved "https://registry.yarnpkg.com/react-relay-network-modern/-/react-relay-network-modern-2.7.0.tgz#4436e5122125fadd2a408fa5b55716414e8c3fa4"
-  integrity sha512-MsqTkvdWUoZcHjpqZzY7vaVFD2gWV0DbC+WGNqZ6RzDAkSG41u5WO4hBTFzElhXxiNPZ/cLf4hg9Q4anz/1NRA==
+react-relay-network-modern@^4.0.2:
+  version "4.0.2"
+  resolved "https://registry.yarnpkg.com/react-relay-network-modern/-/react-relay-network-modern-4.0.2.tgz#f87df3c9b4c03c5139e8374110e216ce5e837bf5"
+  integrity sha512-eTeMEk+4t4z32dHsf5nEi/7Dp74ygDptwAS4bSOgishq1qOAjs/BngppO9ehBbI4Y6YV6wjulSAGamde4XngEQ==
 
 react-relay@^5.0.0:
   version "5.0.0"
