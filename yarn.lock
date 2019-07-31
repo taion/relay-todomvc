@@ -971,6 +971,11 @@
   resolved "https://registry.yarnpkg.com/@types/normalize-package-data/-/normalize-package-data-2.4.0.tgz#e486d0d97396d79beedd0a6e33f4534ff6b4973e"
   integrity sha512-f5j5b/Gf71L+dbqxIpQ4Z2WlmI/mPJ0fOkGGmFgtb6sAu97EPczzbS3/tJKxmcYDj55OX6ssqwDAWOHIYDRDGA==
 
+"@types/relay-runtime@^5.0.3":
+  version "5.0.3"
+  resolved "https://registry.yarnpkg.com/@types/relay-runtime/-/relay-runtime-5.0.3.tgz#92daa14f70a76d38f8b850d470d79e11e34c0408"
+  integrity sha512-JSnnY+Qfc5/airey+gXxRgfmBX7PzABH0G8+nYYfhtBdioD+mzl2X9VQCgJLiwFGnFvdZXZcGS3p91OrZEsdWQ==
+
 "@webassemblyjs/ast@1.8.5":
   version "1.8.5"
   resolved "https://registry.yarnpkg.com/@webassemblyjs/ast/-/ast-1.8.5.tgz#51b1c5fe6576a34953bf4b253df9f0d490d9e359"
@@ -5163,10 +5168,12 @@ react-relay-network-modern-ssr@1.2.4:
   resolved "https://registry.yarnpkg.com/react-relay-network-modern-ssr/-/react-relay-network-modern-ssr-1.2.4.tgz#3d55ee9e9ed7ed07a2c7c56fc274eba3114777e1"
   integrity sha512-WG7QunjWP1zv7hp+sOwpeAtqCt5mukxdtqvoFAoK9BOjAwlovBLVwX4fj3q859VEN6HM4e2GLRhkkfrsOwM6jQ==
 
-react-relay-network-modern@^2.6.0:
-  version "2.7.0"
-  resolved "https://registry.yarnpkg.com/react-relay-network-modern/-/react-relay-network-modern-2.7.0.tgz#4436e5122125fadd2a408fa5b55716414e8c3fa4"
-  integrity sha512-MsqTkvdWUoZcHjpqZzY7vaVFD2gWV0DbC+WGNqZ6RzDAkSG41u5WO4hBTFzElhXxiNPZ/cLf4hg9Q4anz/1NRA==
+react-relay-network-modern@^4.0.3:
+  version "4.0.3"
+  resolved "https://registry.yarnpkg.com/react-relay-network-modern/-/react-relay-network-modern-4.0.3.tgz#9777d2988089b7211ab448b4cc475a9d7a299fc1"
+  integrity sha512-7cvr3ZWzZAiIK5OBPoZ/Dimy4pSDBE56gqZuS1JHvbiVpDfZClVZiBjZoL3uIqdHsSZtSqhr4b1m0Y548mNSrg==
+  optionalDependencies:
+    "@types/relay-runtime" "^5.0.3"
 
 react-relay@^5.0.0:
   version "5.0.0"
