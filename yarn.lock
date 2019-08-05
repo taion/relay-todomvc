@@ -2,10 +2,10 @@
 # yarn lockfile v1
 
 
-"@4c/babel-preset@^5.2.0":
-  version "5.2.0"
-  resolved "https://registry.yarnpkg.com/@4c/babel-preset/-/babel-preset-5.2.0.tgz#ab36cbc930874b1acc2cf8ad44a12a0a404b1490"
-  integrity sha512-UPIdn6kpnSUDOt47dF6ftcsgVoI5Jjxjm2JBZsz0pTNiWYRQYZBtq1vR3nO/xz+FWJIpRU5jLmsJp8Hf4Jc4vQ==
+"@4c/babel-preset@^6.0.2":
+  version "6.0.2"
+  resolved "https://registry.yarnpkg.com/@4c/babel-preset/-/babel-preset-6.0.2.tgz#32149ff269eebae4077951debb9b885b206be616"
+  integrity sha512-dv+M4nqe72Qv0GE0KfyRD8xZUn2OBKKU3r75CcJkUuWbE296+gFgbn1ttrCiXp7rsvpbtkoiBzMsn0UH58We+A==
   dependencies:
     "@babel/plugin-proposal-class-properties" "^7.4.0"
     "@babel/plugin-proposal-export-default-from" "^7.2.0"
@@ -16,7 +16,7 @@
     "@babel/preset-env" "^7.4.1"
     "@babel/preset-react" "^7.0.0"
     babel-plugin-dev-expression "^0.2.1"
-    babel-plugin-react-intl "^3.0.1"
+    babel-plugin-react-intl "^4.0.0"
     browserslist "^4.5.6"
     lodash "^4.17.11"
     read-pkg-up "^5.0.0"
@@ -1431,16 +1431,16 @@ babel-plugin-macros@^2.0.0:
     cosmiconfig "^5.2.0"
     resolve "^1.10.0"
 
-babel-plugin-react-intl@^3.0.1:
-  version "3.5.1"
-  resolved "https://registry.yarnpkg.com/babel-plugin-react-intl/-/babel-plugin-react-intl-3.5.1.tgz#57d22cae27238b4020403b13de9e763267937648"
-  integrity sha512-1jlEJCSmLaJM4tjIKpu64UZ833COCHmwR77bFJDOye+zlwf80uR1b8p41l4tClx1QsrfI+qV6w/5AiPYQgaMUQ==
+babel-plugin-react-intl@^4.0.0:
+  version "4.1.5"
+  resolved "https://registry.yarnpkg.com/babel-plugin-react-intl/-/babel-plugin-react-intl-4.1.5.tgz#7e65f1d18a4f54c4813e18c6f9c4d72f6167a69f"
+  integrity sha512-wERgTY+NUiaO1fY3yRXB9XYDtMlhyrIlCyixSO5vgQ48OJQL5A6bZ9HBz6OA+2I2ciSjCmQOxj38eEQczzStKw==
   dependencies:
     "@babel/core" "^7.4.5"
     "@babel/helper-plugin-utils" "^7.0.0"
     "@types/babel__core" "^7.1.2"
     fs-extra "^8.0.1"
-    intl-messageformat-parser "^1.8.1"
+    intl-messageformat-parser "^3.0.1"
 
 babel-plugin-relay@^5.0.0:
   version "5.0.0"
@@ -4056,10 +4056,10 @@ interpret@1.2.0:
   resolved "https://registry.yarnpkg.com/interpret/-/interpret-1.2.0.tgz#d5061a6224be58e8083985f5014d844359576296"
   integrity sha512-mT34yGKMNceBQUoVn7iCDKDntA7SC6gycMAWzGx1z/CMCTV7b2AAtXlo3nRyHZ1FelRkQbQjprHSYGwzLtkVbw==
 
-intl-messageformat-parser@^1.8.1:
-  version "1.8.1"
-  resolved "https://registry.yarnpkg.com/intl-messageformat-parser/-/intl-messageformat-parser-1.8.1.tgz#0eb14c5618333be4c95c409457b66c8c33ddcc01"
-  integrity sha512-IMSCKVf0USrM/959vj3xac7s8f87sc+80Y/ipBzdKy4ifBv5Gsj2tZ41EAaURVg01QU71fYr77uA8Meh6kELbg==
+intl-messageformat-parser@^3.0.1:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/intl-messageformat-parser/-/intl-messageformat-parser-3.0.1.tgz#3d46d108708c0dda3abed73d768be598e057fd24"
+  integrity sha512-3qVo8VvONtNu3Ky8nH8avuLyC0te5bx4oZCIUmFwArhJ3xBhcikfZBWcSB1WU6y+BdEMLEuwgRVQyoueVe0GpA==
 
 invariant@^2.2.2, invariant@^2.2.4:
   version "2.2.4"
