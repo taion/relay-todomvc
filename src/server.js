@@ -51,6 +51,7 @@ const webpackConfig = {
                 {
                   target: 'web-app',
                   useBuiltIns: 'usage',
+                  envCorejs: 2,
                 },
               ],
             ],
