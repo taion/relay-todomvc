@@ -3034,10 +3034,10 @@ forwarded@~0.1.2:
   resolved "https://registry.yarnpkg.com/forwarded/-/forwarded-0.1.2.tgz#98c23dab1175657b8c0573e8ceccd91b0ff18c84"
   integrity sha1-mMI9qxF1ZXuMBXPozszZGw/xjIQ=
 
-found-relay@^0.4.0:
-  version "0.4.0"
-  resolved "https://registry.yarnpkg.com/found-relay/-/found-relay-0.4.0.tgz#a10cb7dbf4ef495be8d1fe5108145047489805dd"
-  integrity sha512-I9ZgrOyfn7ojwLiYSdRjbJNmLd4l9p6Y94drLD9w8h/2kYKenFoLumiWFxN4rLhACv8SgssPBX8zitY31hR92g==
+found-relay@^0.4.1:
+  version "0.4.1"
+  resolved "https://registry.yarnpkg.com/found-relay/-/found-relay-0.4.1.tgz#2d48a99125dad2ee80e746ddfb226978d43c78fb"
+  integrity sha512-pUpOBaLwRgZ6z6K8mvgBt1RRaTMuQ5xp2gZZErnXcSLHKD1bI0QeiOjzBXNBFmlpXmcGbatHVcUXJQRCXMvMpw==
   dependencies:
     "@babel/runtime-corejs2" "^7.4.5"
     is-promise "^2.1.0"
