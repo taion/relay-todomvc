@@ -44,6 +44,7 @@
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-prettier": "^3.1.0",
     "eslint-plugin-react": "^7.14.3",
+    "eslint-plugin-react-hooks": "^1.7.0",
     "farce": "^0.2.8",
     "found": "^0.4.7",
     "found-relay": "^0.4.1",
@@ -67,8 +68,5 @@
     "webpack": "^4.39.2",
     "webpack-cli": "^3.3.6",
     "webpack-dev-server": "^3.8.0"
-  },
-  "devDependencies": {
-    "eslint-plugin-react-hooks": "^1.7.0"
   }
 }
