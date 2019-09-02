@@ -828,15 +828,7 @@
     pirates "^4.0.0"
     source-map-support "^0.5.9"
 
-"@babel/runtime-corejs2@^7.4.5":
-  version "7.5.5"
-  resolved "https://registry.yarnpkg.com/@babel/runtime-corejs2/-/runtime-corejs2-7.5.5.tgz#c3214c08ef20341af4187f1c9fbdc357fbec96b2"
-  integrity sha512-FYATQVR00NSNi7mUfpPDp7E8RYMXDuO8gaix7u/w3GekfUinKgX1AcTxs7SoiEmoEW9mbpjrwqWSW6zCmw5h8A==
-  dependencies:
-    core-js "^2.6.5"
-    regenerator-runtime "^0.13.2"
-
-"@babel/runtime-corejs3@^7.4.5":
+"@babel/runtime-corejs3@^7.4.5", "@babel/runtime-corejs3@^7.5.5":
   version "7.5.5"
   resolved "https://registry.yarnpkg.com/@babel/runtime-corejs3/-/runtime-corejs3-7.5.5.tgz#9744c03bdbef3091d277345bdd7131a29e67c957"
   integrity sha512-bNxHJ+w7RfLzZJtIZdEjFgL1twwZ6ozuOmsEjtyuTqfi1hb1fqsDYYyi3Fi3i+RgAO4S9+wkSG102+GCqdpr7w==
@@ -3402,14 +3394,14 @@ forwarded@~0.1.2:
   resolved "https://registry.yarnpkg.com/forwarded/-/forwarded-0.1.2.tgz#98c23dab1175657b8c0573e8ceccd91b0ff18c84"
   integrity sha1-mMI9qxF1ZXuMBXPozszZGw/xjIQ=
 
-found-relay@^0.4.1:
-  version "0.4.1"
-  resolved "https://registry.yarnpkg.com/found-relay/-/found-relay-0.4.1.tgz#2d48a99125dad2ee80e746ddfb226978d43c78fb"
-  integrity sha512-pUpOBaLwRgZ6z6K8mvgBt1RRaTMuQ5xp2gZZErnXcSLHKD1bI0QeiOjzBXNBFmlpXmcGbatHVcUXJQRCXMvMpw==
+found-relay@^0.4.2:
+  version "0.4.2"
+  resolved "https://registry.yarnpkg.com/found-relay/-/found-relay-0.4.2.tgz#a2a7ee087f1968cc69d4cc962c832bdde055c2a7"
+  integrity sha512-d9Khgiqu7GyanHgpqHwr6VBD5Z1TsPMkQS98xW09U1tNJfk4TMugrfdWS8vhkDc8APjb2IzC0MsUxU/vbFLb5Q==
   dependencies:
-    "@babel/runtime-corejs2" "^7.4.5"
+    "@babel/runtime-corejs3" "^7.5.5"
     is-promise "^2.1.0"
-    lodash "^4.17.11"
+    lodash "^4.17.15"
     prop-types "^15.7.2"
     warning "^4.0.3"
 
