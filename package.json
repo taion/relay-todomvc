@@ -67,6 +67,6 @@
     "todomvc-common": "^1.0.5",
     "webpack": "^4.40.2",
     "webpack-cli": "^3.3.8",
-    "webpack-dev-server": "^3.8.0"
+    "webpack-dev-server": "^3.8.1"
   }
 }
