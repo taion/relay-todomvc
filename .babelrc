@@ -3,7 +3,7 @@
     ["@4c", {
       "target": "web-app",
       "useBuiltIns": "usage",
-      "envCorejs": 2
+      "envCorejs": 3
     }]
   ],
   "plugins": [
