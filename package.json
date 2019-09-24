@@ -29,7 +29,7 @@
     "@4c/babel-preset": "^7.0.0",
     "@babel/cli": "^7.6.0",
     "@babel/core": "^7.6.2",
-    "@babel/node": "^7.6.1",
+    "@babel/node": "^7.6.2",
     "@babel/runtime": "^7.6.2",
     "babel-loader": "^8.0.6",
     "babel-plugin-relay": "^6.0.0",
