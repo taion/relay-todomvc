@@ -46,7 +46,7 @@
     "farce": "^0.2.8",
     "found": "^0.4.7",
     "found-relay": "^0.5.0",
-    "graphql": "^14.5.6",
+    "graphql": "^14.5.8",
     "graphql-relay": "^0.6.0",
     "husky": "^3.0.5",
     "isomorphic-fetch": "^2.2.1",
