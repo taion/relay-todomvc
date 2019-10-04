@@ -58,7 +58,7 @@
     "prettier": "^1.18.2",
     "prop-types": "^15.7.2",
     "react": "^16.10.1",
-    "react-dom": "^16.10.1",
+    "react-dom": "^16.10.2",
     "react-relay": "^6.0.0",
     "relay-compiler": "^6.0.0",
     "relay-local-schema": "^0.8.0",
