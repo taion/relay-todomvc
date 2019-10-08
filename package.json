@@ -54,7 +54,7 @@
     "html-webpack-plugin": "^3.2.0",
     "husky": "^3.0.8",
     "keycode": "^2.2.0",
-    "lint-staged": "^9.4.1",
+    "lint-staged": "^9.4.2",
     "prettier": "^1.18.2",
     "prop-types": "^15.7.2",
     "react": "^16.10.2",
