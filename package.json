@@ -52,7 +52,7 @@
     "graphql": "^14.5.8",
     "graphql-relay": "^0.6.0",
     "html-webpack-plugin": "^3.2.0",
-    "husky": "^3.0.8",
+    "husky": "^3.0.9",
     "keycode": "^2.2.0",
     "lint-staged": "^9.4.2",
     "prettier": "^1.18.2",
