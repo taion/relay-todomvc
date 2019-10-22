@@ -62,7 +62,7 @@
     "react-relay": "^6.0.0",
     "relay-compiler": "^6.0.0",
     "relay-local-schema": "^0.8.0",
-    "relay-runtime": "^6.0.0",
+    "relay-runtime": "^7.0.0",
     "style-loader": "^1.0.0",
     "todomvc-app-css": "^2.3.0",
     "todomvc-common": "^1.0.5",
