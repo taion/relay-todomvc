@@ -32,7 +32,7 @@
     "@babel/node": "^7.6.3",
     "@babel/runtime": "^7.6.3",
     "babel-loader": "^8.0.6",
-    "babel-plugin-relay": "^6.0.0",
+    "babel-plugin-relay": "^7.0.0",
     "classnames": "^2.2.6",
     "copy-webpack-plugin": "^5.0.4",
     "core-js": "^3.3.3",
@@ -59,15 +59,15 @@
     "prop-types": "^15.7.2",
     "react": "^16.10.2",
     "react-dom": "^16.10.2",
-    "react-relay": "^6.0.0",
-    "relay-compiler": "^6.0.0",
+    "react-relay": "^7.0.0",
+    "relay-compiler": "^7.0.0",
     "relay-local-schema": "^0.8.0",
-    "relay-runtime": "^6.0.0",
+    "relay-runtime": "^7.0.0",
     "style-loader": "^1.0.0",
     "todomvc-app-css": "^2.3.0",
     "todomvc-common": "^1.0.5",
     "webpack": "^4.41.2",
     "webpack-cli": "^3.3.9",
-    "webpack-dev-server": "^3.8.2"
+    "webpack-dev-server": "^3.9.0"
   }
 }
