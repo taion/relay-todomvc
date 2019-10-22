@@ -60,7 +60,7 @@
     "react": "^16.10.2",
     "react-dom": "^16.10.2",
     "react-relay": "^6.0.0",
-    "relay-compiler": "^6.0.0",
+    "relay-compiler": "^7.0.0",
     "relay-local-schema": "^0.8.0",
     "relay-runtime": "^6.0.0",
     "style-loader": "^1.0.0",
