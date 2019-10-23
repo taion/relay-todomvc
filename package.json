@@ -57,7 +57,7 @@
     "lint-staged": "^9.4.2",
     "prettier": "^1.18.2",
     "prop-types": "^15.7.2",
-    "react": "^16.10.2",
+    "react": "^16.11.0",
     "react-dom": "^16.10.2",
     "react-relay": "^7.0.0",
     "relay-compiler": "^7.0.0",
