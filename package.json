@@ -35,7 +35,7 @@
     "babel-plugin-relay": "^7.0.0",
     "classnames": "^2.2.6",
     "copy-webpack-plugin": "^5.0.4",
-    "core-js": "^3.3.3",
+    "core-js": "^3.3.4",
     "cross-env": "^6.0.3",
     "css-loader": "^3.2.0",
     "eslint": "^6.5.1",
