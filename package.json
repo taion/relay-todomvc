@@ -34,7 +34,7 @@
     "classnames": "^2.2.6",
     "copy-webpack-plugin": "^5.0.4",
     "core-js": "^2.6.10",
-    "eslint": "^6.5.1",
+    "eslint": "^6.6.0",
     "eslint-config-4catalyzer-react": "^1.0.0",
     "eslint-config-prettier": "^6.4.0",
     "eslint-plugin-import": "^2.18.2",
