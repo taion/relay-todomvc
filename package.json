@@ -32,7 +32,7 @@
     "@babel/node": "^7.7.0",
     "@babel/runtime": "^7.7.2",
     "babel-loader": "^8.0.6",
-    "babel-plugin-relay": "^7.0.0",
+    "babel-plugin-relay": "^7.1.0",
     "classnames": "^2.2.6",
     "copy-webpack-plugin": "^5.0.5",
     "core-js": "^3.4.0",
