@@ -40,7 +40,7 @@
     "css-loader": "^3.2.0",
     "eslint": "^6.6.0",
     "eslint-config-4catalyzer-react": "^1.0.0",
-    "eslint-config-prettier": "^6.5.0",
+    "eslint-config-prettier": "^6.6.0",
     "eslint-plugin-import": "^2.18.2",
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-prettier": "^3.1.1",
