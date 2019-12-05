@@ -63,7 +63,7 @@
     "regenerator-runtime": "^0.13.3",
     "relay-compiler": "^7.0.0",
     "relay-runtime": "^7.0.0",
-    "serialize-javascript": "^2.1.0",
+    "serialize-javascript": "^2.1.1",
     "todomvc-app-css": "^2.3.0",
     "todomvc-common": "^1.0.5",
     "webpack": "^4.41.2",
