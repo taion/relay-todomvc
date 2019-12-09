@@ -28,7 +28,7 @@
     "@babel/cli": "^7.6.4",
     "@babel/core": "^7.6.4",
     "@babel/node": "^7.6.3",
-    "@babel/runtime": "^7.6.3",
+    "@babel/runtime": "^7.7.6",
     "babel-loader": "^8.0.6",
     "babel-plugin-relay": "^7.0.0",
     "classnames": "^2.2.6",
