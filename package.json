@@ -30,7 +30,7 @@
     "@babel/cli": "^7.7.5",
     "@babel/core": "^7.7.5",
     "@babel/node": "^7.7.4",
-    "@babel/runtime": "^7.7.6",
+    "@babel/runtime": "^7.7.7",
     "babel-loader": "^8.0.6",
     "babel-plugin-relay": "^7.1.0",
     "classnames": "^2.2.6",
