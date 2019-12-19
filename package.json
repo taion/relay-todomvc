@@ -28,7 +28,7 @@
   "dependencies": {
     "@4c/babel-preset": "^7.2.4",
     "@babel/cli": "^7.7.7",
-    "@babel/core": "^7.7.5",
+    "@babel/core": "^7.7.7",
     "@babel/node": "^7.7.4",
     "@babel/runtime": "^7.7.7",
     "babel-loader": "^8.0.6",
