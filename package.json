@@ -63,7 +63,7 @@
     "relay-compiler": "^8.0.0",
     "relay-local-schema": "^0.8.0",
     "relay-runtime": "^8.0.0",
-    "style-loader": "^1.1.1",
+    "style-loader": "^1.1.2",
     "todomvc-app-css": "^2.3.0",
     "todomvc-common": "^1.0.5",
     "webpack": "^4.41.4",
