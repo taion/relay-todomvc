@@ -2851,18 +2851,18 @@ escape-string-regexp@^1.0.2, escape-string-regexp@^1.0.5:
   resolved "https://registry.yarnpkg.com/escape-string-regexp/-/escape-string-regexp-1.0.5.tgz#1b61c0562190a8dff6ae3bb2cf0200ca130b86d4"
   integrity sha1-G2HAViGQqN/2rjuyzwIAyhMLhtQ=
 
-eslint-config-4catalyzer-react@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/eslint-config-4catalyzer-react/-/eslint-config-4catalyzer-react-1.0.1.tgz#36d9324950d1f2506932a0e2242c226abc19b6f4"
-  integrity sha512-0nFaOojyDMn4vfzXQx3ghgfDwKROacYsdsh6FdK3wRRfX/IcUeDZRLyJSFw1hTr/jE7t+Ht26+MZLVgBmhY3kg==
+eslint-config-4catalyzer-react@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/eslint-config-4catalyzer-react/-/eslint-config-4catalyzer-react-1.0.2.tgz#257c7d09001dd92282d56fe34ec0d7e83c56db6c"
+  integrity sha512-hk1nAtSmi+k3Ooi14YjL66/nN/vsOq28H9UyO1nH9MnHUp9zCp7z78FrpDWhuWWwpMziSVr+/8pl7KGA2r5E4g==
   dependencies:
-    eslint-config-4catalyzer "^1.0.1"
+    eslint-config-4catalyzer "^1.0.2"
     eslint-config-airbnb "^18.0.1"
 
-eslint-config-4catalyzer@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/eslint-config-4catalyzer/-/eslint-config-4catalyzer-1.0.1.tgz#66cacf4f972515a267f5fadcc469abc2b6186260"
-  integrity sha512-si5M/ulNGdZ+/4E4vyeLWqKOBLgCBOpk3fY4Yht4KQROzigU+fU2dHA73x9EU+xWsC+ntgpZQhub/5AH6HEfXw==
+eslint-config-4catalyzer@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/eslint-config-4catalyzer/-/eslint-config-4catalyzer-1.0.2.tgz#8066995808a8771abbe2f2185ad59b14392dff5a"
+  integrity sha512-SQCxwPd5InM0qpZHv6Ksg5A2zEZVU+J/W0MNtQETujz8QyXhu6n1MCP/dN7BUymTwPoZkZuU7aV+MSaSoQ+c/A==
   dependencies:
     babel-eslint "^10.0.2"
     eslint-config-airbnb-base "^14.0.0"
