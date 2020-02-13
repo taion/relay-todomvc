@@ -1761,7 +1761,7 @@ axobject-query@^2.0.2:
     "@babel/runtime" "^7.7.4"
     "@babel/runtime-corejs3" "^7.7.4"
 
-babel-eslint@^10.0.2:
+babel-eslint@^10.0.3:
   version "10.0.3"
   resolved "https://registry.yarnpkg.com/babel-eslint/-/babel-eslint-10.0.3.tgz#81a2c669be0f205e19462fed2482d33e4687a88a"
   integrity sha512-z3U7eMY6r/3f3/JB9mTsLjyxrv0Yb1zb8PCWCLpguxfCzBIZUwy23R1t/XKewP+8mEN2Ck8Dtr4q20z6ce6SoA==
@@ -3092,20 +3092,20 @@ escape-string-regexp@^1.0.2, escape-string-regexp@^1.0.5:
   resolved "https://registry.yarnpkg.com/escape-string-regexp/-/escape-string-regexp-1.0.5.tgz#1b61c0562190a8dff6ae3bb2cf0200ca130b86d4"
   integrity sha1-G2HAViGQqN/2rjuyzwIAyhMLhtQ=
 
-eslint-config-4catalyzer-react@^1.0.2:
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/eslint-config-4catalyzer-react/-/eslint-config-4catalyzer-react-1.0.2.tgz#257c7d09001dd92282d56fe34ec0d7e83c56db6c"
-  integrity sha512-hk1nAtSmi+k3Ooi14YjL66/nN/vsOq28H9UyO1nH9MnHUp9zCp7z78FrpDWhuWWwpMziSVr+/8pl7KGA2r5E4g==
+eslint-config-4catalyzer-react@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/eslint-config-4catalyzer-react/-/eslint-config-4catalyzer-react-1.0.3.tgz#252bb0e90ffce9c07e929bc0d7723691d4498c49"
+  integrity sha512-eWS1UwZhefB6UWMaufU3QpR3LstozsPegEDqTX8KRNz3zBnK9GCRFeHTtcU7AbGwQguxt6zOrV3IosutEqbr0w==
   dependencies:
-    eslint-config-4catalyzer "^1.0.2"
+    eslint-config-4catalyzer "^1.1.0"
     eslint-config-airbnb "^18.0.1"
 
-eslint-config-4catalyzer@^1.0.2:
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/eslint-config-4catalyzer/-/eslint-config-4catalyzer-1.0.2.tgz#8066995808a8771abbe2f2185ad59b14392dff5a"
-  integrity sha512-SQCxwPd5InM0qpZHv6Ksg5A2zEZVU+J/W0MNtQETujz8QyXhu6n1MCP/dN7BUymTwPoZkZuU7aV+MSaSoQ+c/A==
+eslint-config-4catalyzer@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/eslint-config-4catalyzer/-/eslint-config-4catalyzer-1.1.0.tgz#4db44fb42b6f2f18af5ad62256575cdadd27d445"
+  integrity sha512-ruLHTvJYtEEYKnQqSuUtUIxGndxSVcLcIO5Xd5CX5+r5NtgnsOtY4GCZyKXGgA02VaP2N/2yjbTbrikhd22nSQ==
   dependencies:
-    babel-eslint "^10.0.2"
+    babel-eslint "^10.0.3"
     eslint-config-airbnb-base "^14.0.0"
 
 eslint-config-airbnb-base@^14.0.0:
