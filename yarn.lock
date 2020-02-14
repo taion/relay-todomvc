@@ -2,10 +2,10 @@
 # yarn lockfile v1
 
 
-"@4c/babel-preset@^7.3.1":
-  version "7.3.1"
-  resolved "https://registry.yarnpkg.com/@4c/babel-preset/-/babel-preset-7.3.1.tgz#e7a98888b268fad61be4a36a61dda0eeb41b1a83"
-  integrity sha512-PMSlvcMoCSCMUk+ee0XWrX38BnhaIN7q3ToCLx0OY3jD49h78+QLKiarX+y3VhsIsRvf89SU/PbUQq8nXvfolQ==
+"@4c/babel-preset@^7.3.2":
+  version "7.3.2"
+  resolved "https://registry.yarnpkg.com/@4c/babel-preset/-/babel-preset-7.3.2.tgz#6915240fb2ee28c28a8bf0778317bd1f7dff19d6"
+  integrity sha512-QvlaBH2pjPBj+Bkjk66LeGvpVS0UAl7JnGNKj3ud5OLxiPpa8QsoQfYX5NQnqfjht8aCrxoT7OksOa7WFdUDqQ==
   dependencies:
     "@babel/plugin-proposal-class-properties" "^7.8.3"
     "@babel/plugin-proposal-export-default-from" "^7.8.3"
@@ -3092,18 +3092,18 @@ escape-string-regexp@^1.0.2, escape-string-regexp@^1.0.5:
   resolved "https://registry.yarnpkg.com/escape-string-regexp/-/escape-string-regexp-1.0.5.tgz#1b61c0562190a8dff6ae3bb2cf0200ca130b86d4"
   integrity sha1-G2HAViGQqN/2rjuyzwIAyhMLhtQ=
 
-eslint-config-4catalyzer-react@^1.0.3:
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/eslint-config-4catalyzer-react/-/eslint-config-4catalyzer-react-1.0.3.tgz#252bb0e90ffce9c07e929bc0d7723691d4498c49"
-  integrity sha512-eWS1UwZhefB6UWMaufU3QpR3LstozsPegEDqTX8KRNz3zBnK9GCRFeHTtcU7AbGwQguxt6zOrV3IosutEqbr0w==
+eslint-config-4catalyzer-react@^1.0.4:
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/eslint-config-4catalyzer-react/-/eslint-config-4catalyzer-react-1.0.4.tgz#216331b8e037ec28bdd42916809276dc4b3ab6bc"
+  integrity sha512-sUo5hqXVbhNOaV1OZVXw3UPXIPbrlBpqEVkxDvf+9JNiS6NwfveKIttxTzvlBDhtUdC7ApzDPvD29RYqMni2iQ==
   dependencies:
-    eslint-config-4catalyzer "^1.1.0"
+    eslint-config-4catalyzer "^1.1.1"
     eslint-config-airbnb "^18.0.1"
 
-eslint-config-4catalyzer@^1.1.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/eslint-config-4catalyzer/-/eslint-config-4catalyzer-1.1.0.tgz#4db44fb42b6f2f18af5ad62256575cdadd27d445"
-  integrity sha512-ruLHTvJYtEEYKnQqSuUtUIxGndxSVcLcIO5Xd5CX5+r5NtgnsOtY4GCZyKXGgA02VaP2N/2yjbTbrikhd22nSQ==
+eslint-config-4catalyzer@^1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/eslint-config-4catalyzer/-/eslint-config-4catalyzer-1.1.1.tgz#8504e6c653def5cba35c0a793ba26989f987bab2"
+  integrity sha512-Edl1Hl+RfLKrhWYsTwNUdIVNaLXxfrpaDI4sQZgRcw1qHjdS6Z2PpYT52xT9FzicP/YQyZEnihvXY4Z/Yg2zWg==
   dependencies:
     babel-eslint "^10.0.3"
     eslint-config-airbnb-base "^14.0.0"
