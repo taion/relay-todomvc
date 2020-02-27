@@ -2464,10 +2464,10 @@ escape-string-regexp@^1.0.2, escape-string-regexp@^1.0.5:
   resolved "https://registry.yarnpkg.com/escape-string-regexp/-/escape-string-regexp-1.0.5.tgz#1b61c0562190a8dff6ae3bb2cf0200ca130b86d4"
   integrity sha1-G2HAViGQqN/2rjuyzwIAyhMLhtQ=
 
-eslint-config-4catalyzer-react@^1.0.4:
-  version "1.0.4"
-  resolved "https://registry.yarnpkg.com/eslint-config-4catalyzer-react/-/eslint-config-4catalyzer-react-1.0.4.tgz#216331b8e037ec28bdd42916809276dc4b3ab6bc"
-  integrity sha512-sUo5hqXVbhNOaV1OZVXw3UPXIPbrlBpqEVkxDvf+9JNiS6NwfveKIttxTzvlBDhtUdC7ApzDPvD29RYqMni2iQ==
+eslint-config-4catalyzer-react@^1.0.5:
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/eslint-config-4catalyzer-react/-/eslint-config-4catalyzer-react-1.0.5.tgz#322129095c77087f1b507682a4d161e1cf3f20cd"
+  integrity sha512-s3Ueo23s5LczbbXkUJt4wNaAOTmVxD+gmBBn3wOUvvhMyefQ2hJacVV7RHlYIcq+Ks3D3x3tPak0D1Wv7h2qhw==
   dependencies:
     eslint-config-4catalyzer "^1.1.1"
     eslint-config-airbnb "^18.0.1"
