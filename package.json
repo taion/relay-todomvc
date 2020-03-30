@@ -47,7 +47,7 @@
     "eslint-plugin-react": "^7.19.0",
     "eslint-plugin-react-hooks": "^3.0.0",
     "farce": "^0.2.8",
-    "found": "^0.4.9",
+    "found": "^0.4.10",
     "found-relay": "^0.7.0",
     "graphql": "^14.6.0",
     "graphql-relay": "^0.6.0",
