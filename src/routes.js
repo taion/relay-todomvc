@@ -1,5 +1,5 @@
-import Route from 'found/lib/Route';
-import makeRouteConfig from 'found/lib/makeRouteConfig';
+import Route from 'found/Route';
+import makeRouteConfig from 'found/makeRouteConfig';
 import React from 'react';
 import { graphql } from 'react-relay';
 
