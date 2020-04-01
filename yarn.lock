@@ -1020,11 +1020,6 @@
   resolved "https://registry.yarnpkg.com/@types/parse-json/-/parse-json-4.0.0.tgz#2f8bb441434d163b35fb8ffdccd7138927ffb8c0"
   integrity sha512-//oorEZjL6sbPcKUaCdIGlIUeH26mgzimjBB77G6XRgnDl/L5wOnpyBGRe/Mmf5CVW3PwEBE1NjiMZ/ssFh4wA==
 
-"@types/relay-runtime@^5.0.3":
-  version "5.0.5"
-  resolved "https://registry.yarnpkg.com/@types/relay-runtime/-/relay-runtime-5.0.5.tgz#62fb80d4925a707583e535f6d0afdf0762467adb"
-  integrity sha512-ZfhRGH8kYnMUeV3NBSYsy99hvJ/GiWAZ4Kc7KG7SuKXdYAHNuHV69TJnHmnmuh54EZytu3NplYDwccerghykpQ==
-
 "@types/schema-utils@^1.0.0":
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/@types/schema-utils/-/schema-utils-1.0.0.tgz#295d36f01e2cb8bc3207ca1d9a68e210db6b40cb"
@@ -2821,6 +2816,11 @@ extglob@^2.0.4:
     regex-not "^1.0.0"
     snapdragon "^0.8.1"
     to-regex "^3.0.1"
+
+extract-files@^5.0.1:
+  version "5.0.1"
+  resolved "https://registry.yarnpkg.com/extract-files/-/extract-files-5.0.1.tgz#c9492a8410be643e260a376f0151361993d5f659"
+  integrity sha512-qRW6y9eKF0VbCyOoOEtFhzJ3uykAw8GKwQVXyAIqwocyEWW4m+v+evec34RwtUkkxxHh7NKBLJ6AnXM8W4dH5w==
 
 farce@^0.2.8:
   version "0.2.8"
@@ -5022,12 +5022,12 @@ react-relay-network-modern-ssr@~1.2.4:
   resolved "https://registry.yarnpkg.com/react-relay-network-modern-ssr/-/react-relay-network-modern-ssr-1.2.4.tgz#3d55ee9e9ed7ed07a2c7c56fc274eba3114777e1"
   integrity sha512-WG7QunjWP1zv7hp+sOwpeAtqCt5mukxdtqvoFAoK9BOjAwlovBLVwX4fj3q859VEN6HM4e2GLRhkkfrsOwM6jQ==
 
-react-relay-network-modern@~4.2.0:
-  version "4.2.0"
-  resolved "https://registry.yarnpkg.com/react-relay-network-modern/-/react-relay-network-modern-4.2.0.tgz#dd9eefad851fb0b76a732cc4ab996133319efbc6"
-  integrity sha512-057ydvR+RLUrCKzLef525uSR4/fJVMzeyc3I/P61Wi/N7iMdBzE/DYVcaYbqq4rK6OORJACaunmMKUPeqBPcFg==
-  optionalDependencies:
-    "@types/relay-runtime" "^5.0.3"
+react-relay-network-modern@~4.6.1:
+  version "4.6.1"
+  resolved "https://registry.yarnpkg.com/react-relay-network-modern/-/react-relay-network-modern-4.6.1.tgz#872666dc75df1932cce24fc834fccc88108c2d56"
+  integrity sha512-wgIbgNVPDbJy+WywkyNU5AEOdheViNTmeNdWlqPpM0o7SGcX78Rhw1YbrbRH8Iw2aKVBvv+QGOh96rWDdhzetg==
+  dependencies:
+    extract-files "^5.0.1"
 
 react-relay@^9.0.0:
   version "9.0.0"
