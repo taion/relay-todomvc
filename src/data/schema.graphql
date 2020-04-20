@@ -3,53 +3,37 @@ schema {
   mutation: Mutation
 }
 
-input AddTodoInput {
-  text: String!
-  clientMutationId: String
-}
-
-type AddTodoPayload {
+type Root {
   viewer: User
-  todoEdge: TodoEdge
-  clientMutationId: String
+
+  """Fetches an object given its ID"""
+  node(
+    """The ID of an object"""
+    id: ID!
+  ): Node
 }
 
-input ChangeTodoStatusInput {
+type User implements Node {
+  """The ID of an object"""
   id: ID!
-  complete: Boolean!
-  clientMutationId: String
-}
-
-type ChangeTodoStatusPayload {
-  viewer: User
-  todo: Todo
-  clientMutationId: String
-}
-
-input MarkAllTodosInput {
-  complete: Boolean!
-  clientMutationId: String
-}
-
-type MarkAllTodosPayload {
-  viewer: User
-  changedTodos: [Todo]
-  clientMutationId: String
-}
-
-type Mutation {
-  addTodo(input: AddTodoInput!): AddTodoPayload
-  changeTodoStatus(input: ChangeTodoStatusInput!): ChangeTodoStatusPayload
-  markAllTodos(input: MarkAllTodosInput!): MarkAllTodosPayload
-  removeCompletedTodos(input: RemoveCompletedTodosInput!): RemoveCompletedTodosPayload
-  removeTodo(input: RemoveTodoInput!): RemoveTodoPayload
-  renameTodo(input: RenameTodoInput!): RenameTodoPayload
+  todos(status: String = "any", after: String, first: Int, before: String, last: Int): TodoConnection
+  numTodos: Int
+  numCompletedTodos: Int
 }
 
 """An object with an ID"""
 interface Node {
   """The id of the object."""
   id: ID!
+}
+
+"""A connection to a list of items."""
+type TodoConnection {
+  """Information to aid in pagination."""
+  pageInfo: PageInfo!
+
+  """A list of edges."""
+  edges: [TodoEdge]
 }
 
 """Information about pagination in a connection."""
@@ -67,64 +51,6 @@ type PageInfo {
   endCursor: String
 }
 
-input RemoveCompletedTodosInput {
-  clientMutationId: String
-}
-
-type RemoveCompletedTodosPayload {
-  viewer: User
-  deletedIds: [String]
-  clientMutationId: String
-}
-
-input RemoveTodoInput {
-  id: ID!
-  clientMutationId: String
-}
-
-type RemoveTodoPayload {
-  viewer: User
-  deletedId: ID
-  clientMutationId: String
-}
-
-input RenameTodoInput {
-  id: ID!
-  text: String!
-  clientMutationId: String
-}
-
-type RenameTodoPayload {
-  todo: Todo
-  clientMutationId: String
-}
-
-type Root {
-  viewer: User
-
-  """Fetches an object given its ID"""
-  node(
-    """The ID of an object"""
-    id: ID!
-  ): Node
-}
-
-type Todo implements Node {
-  """The ID of an object"""
-  id: ID!
-  complete: Boolean
-  text: String
-}
-
-"""A connection to a list of items."""
-type TodoConnection {
-  """Information to aid in pagination."""
-  pageInfo: PageInfo!
-
-  """A list of edges."""
-  edges: [TodoEdge]
-}
-
 """An edge in a connection."""
 type TodoEdge {
   """The item at the end of the edge"""
@@ -134,10 +60,84 @@ type TodoEdge {
   cursor: String!
 }
 
-type User implements Node {
+type Todo implements Node {
   """The ID of an object"""
   id: ID!
-  todos(status: String = "any", after: String, first: Int, before: String, last: Int): TodoConnection
-  numTodos: Int
-  numCompletedTodos: Int
+  complete: Boolean
+  text: String
+}
+
+type Mutation {
+  addTodo(input: AddTodoInput!): AddTodoPayload
+  changeTodoStatus(input: ChangeTodoStatusInput!): ChangeTodoStatusPayload
+  markAllTodos(input: MarkAllTodosInput!): MarkAllTodosPayload
+  removeCompletedTodos(input: RemoveCompletedTodosInput!): RemoveCompletedTodosPayload
+  removeTodo(input: RemoveTodoInput!): RemoveTodoPayload
+  renameTodo(input: RenameTodoInput!): RenameTodoPayload
+}
+
+type AddTodoPayload {
+  viewer: User
+  todoEdge: TodoEdge
+  clientMutationId: String
+}
+
+input AddTodoInput {
+  text: String!
+  clientMutationId: String
+}
+
+type ChangeTodoStatusPayload {
+  viewer: User
+  todo: Todo
+  clientMutationId: String
+}
+
+input ChangeTodoStatusInput {
+  id: ID!
+  complete: Boolean!
+  clientMutationId: String
+}
+
+type MarkAllTodosPayload {
+  viewer: User
+  changedTodos: [Todo]
+  clientMutationId: String
+}
+
+input MarkAllTodosInput {
+  complete: Boolean!
+  clientMutationId: String
+}
+
+type RemoveCompletedTodosPayload {
+  viewer: User
+  deletedIds: [String]
+  clientMutationId: String
+}
+
+input RemoveCompletedTodosInput {
+  clientMutationId: String
+}
+
+type RemoveTodoPayload {
+  viewer: User
+  deletedId: ID
+  clientMutationId: String
+}
+
+input RemoveTodoInput {
+  id: ID!
+  clientMutationId: String
+}
+
+type RenameTodoPayload {
+  todo: Todo
+  clientMutationId: String
+}
+
+input RenameTodoInput {
+  id: ID!
+  text: String!
+  clientMutationId: String
 }
