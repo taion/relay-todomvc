@@ -22,7 +22,9 @@ module.exports = (env, { mode }) => ({
     new HtmlWebpackPlugin({
       title: 'Relay • TodoMVC',
     }),
-    new CopyWebpackPlugin(['src/assets']),
+    new CopyWebpackPlugin({
+      patterns: ['src/assets'],
+    }),
   ],
 
   devtool: mode === 'production' ? 'source-map' : 'cheap-module-source-map',
