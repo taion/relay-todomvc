@@ -2,7 +2,7 @@ import 'isomorphic-fetch';
 
 import CopyWebpackPlugin from 'copy-webpack-plugin';
 import express from 'express';
-import graphQLHTTP from 'express-graphql';
+import { graphqlHTTP } from 'express-graphql';
 import { Resolver } from 'found-relay';
 import { getFarceResult } from 'found/server';
 import ReactDOMServer from 'react-dom/server';
@@ -19,7 +19,7 @@ const PORT = 8080;
 
 const app = express();
 
-app.use('/graphql', graphQLHTTP({ schema }));
+app.use('/graphql', graphqlHTTP({ schema }));
 
 const webpackConfig = {
   mode: 'development',
@@ -63,11 +63,13 @@ const webpackConfig = {
   },
 
   plugins: [
-    new CopyWebpackPlugin([
-      'src/assets',
-      'node_modules/todomvc-common/base.css',
-      'node_modules/todomvc-app-css/index.css',
-    ]),
+    new CopyWebpackPlugin({
+      patterns: [
+        'src/assets',
+        'node_modules/todomvc-common/base.css',
+        'node_modules/todomvc-app-css/index.css',
+      ],
+    }),
   ],
 
   devtool: 'cheap-module-source-map',
