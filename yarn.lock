@@ -3524,13 +3524,13 @@ forwarded@~0.1.2:
   resolved "https://registry.yarnpkg.com/forwarded/-/forwarded-0.1.2.tgz#98c23dab1175657b8c0573e8ceccd91b0ff18c84"
   integrity sha1-mMI9qxF1ZXuMBXPozszZGw/xjIQ=
 
-found-relay@^0.8.0:
-  version "0.8.0"
-  resolved "https://registry.yarnpkg.com/found-relay/-/found-relay-0.8.0.tgz#16e5a45e78398a03ba35103247a1029c320c06f4"
-  integrity sha512-LfEY8Jdre7xmw5VaoeQcGfZUBxprdjsO+8U7vSlcIyFPuN7AO7FPpLyOXuB0uflhH3Aj07HsksDuTrSEPoopZg==
+found-relay@^0.8.1:
+  version "0.8.1"
+  resolved "https://registry.yarnpkg.com/found-relay/-/found-relay-0.8.1.tgz#0c0d2c2ce94f7dba769d9d7f763977073ad1f8ef"
+  integrity sha512-HCIGSx0kgNsHT9uoD00L3kGns441QPK8nN89shwmtjVUjMbnApu/dkZz0x69LZRxH7D18Op9pOdLgvoQRGZNFA==
   dependencies:
     "@babel/runtime-corejs3" "^7.6.3"
-    is-promise "^2.1.0"
+    is-promise "^4.0.0"
     lodash "^4.17.15"
     prop-types "^15.7.2"
     warning "^4.0.3"
