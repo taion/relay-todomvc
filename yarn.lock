@@ -3317,13 +3317,13 @@ extglob@^2.0.4:
     snapdragon "^0.8.1"
     to-regex "^3.0.1"
 
-farce@^0.4.1:
-  version "0.4.1"
-  resolved "https://registry.yarnpkg.com/farce/-/farce-0.4.1.tgz#6e1b62f53636e55b706b9672adbe560bc223c02f"
-  integrity sha512-qhxBlWEIK3w1uvOylPKBNDTUQz6hF2NHgOgWei91naaYrck3p4o6Z3dBa1Dm2jhYBaGjZLEC102hqqBbSCWn3Q==
+farce@^0.4.1, farce@^0.4.2:
+  version "0.4.2"
+  resolved "https://registry.yarnpkg.com/farce/-/farce-0.4.2.tgz#c5a8c537c7be7aca9637782a6496c7b2e263a8e3"
+  integrity sha512-karFdVYXM66aTda7AXrb7fk+fqs+KJ8TIGHEjBpZiUCknerx1O3fRqHh0sLxfuDFuQH7oTGbIahpOUIPGuBJTA==
   dependencies:
     invariant "^2.2.4"
-    is-promise "^2.1.0"
+    is-promise "^4.0.0"
     query-string "^5.1.1"
     redux "^4.0.4"
     warning "^4.0.3"
@@ -4397,11 +4397,6 @@ is-plain-object@^2.0.3, is-plain-object@^2.0.4:
   integrity sha512-h5PpgXkWitc38BBMYawTYMWJHFZJVnBquFE57xFpjB8pJFiF6gZ+bU+WyI/yqXiFR5mdLsgYNaPe8uao6Uv9Og==
   dependencies:
     isobject "^3.0.1"
-
-is-promise@^2.1.0:
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/is-promise/-/is-promise-2.1.0.tgz#79a2a9ece7f096e80f36d2b2f3bc16c1ff4bf3fa"
-  integrity sha1-eaKp7OfwlugPNtKy87wWwf9L8/o=
 
 is-promise@^4.0.0:
   version "4.0.0"
