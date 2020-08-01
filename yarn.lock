@@ -3317,7 +3317,7 @@ extglob@^2.0.4:
     snapdragon "^0.8.1"
     to-regex "^3.0.1"
 
-farce@^0.4.2, farce@^0.4.3:
+farce@^0.4.3, farce@^0.4.4:
   version "0.4.4"
   resolved "https://registry.yarnpkg.com/farce/-/farce-0.4.4.tgz#083ebdebe987bd08969c6f40ab78ec8bee5b79c4"
   integrity sha512-sZiRNPTYU2EyY9UvqkzLWHD1nXqnS96WuJWX993a5NAPKxqf1RjMPf83kfNfY8lx2+ndms36DjWbzKpvDZMdSw==
