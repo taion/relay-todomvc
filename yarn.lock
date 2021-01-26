@@ -3666,10 +3666,10 @@ forwarded@~0.1.2:
   resolved "https://registry.yarnpkg.com/forwarded/-/forwarded-0.1.2.tgz#98c23dab1175657b8c0573e8ceccd91b0ff18c84"
   integrity sha1-mMI9qxF1ZXuMBXPozszZGw/xjIQ=
 
-found-relay@^0.8.2:
-  version "0.8.2"
-  resolved "https://registry.yarnpkg.com/found-relay/-/found-relay-0.8.2.tgz#589eeee14da9df32c304de925be54f4fd821ce00"
-  integrity sha512-rBNNchEafACS0y7tLIb2r7hfINcFXbELZzFh/5yYGS3riwrS0P/5cgV0elk0tVyD4hRqE6Pgr1HrlXdGUN47VQ==
+found-relay@^0.8.3:
+  version "0.8.3"
+  resolved "https://registry.yarnpkg.com/found-relay/-/found-relay-0.8.3.tgz#ca8870ab6285edb393550d224aca5cbf96a40e54"
+  integrity sha512-fCR/ziq/DCTN6EIsC/iRcjvVh0n+ProRMc8x58Ou4KhILEMzAF4ElInKXat5Gb4QICaWyCh9bOl6UUg/80Fgpw==
   dependencies:
     "@babel/runtime-corejs3" "^7.6.3"
     is-promise "^4.0.0"
