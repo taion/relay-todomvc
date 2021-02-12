@@ -51,7 +51,7 @@
     "found-relay": "^0.8.3",
     "graphql": "^15.5.0",
     "graphql-relay": "^0.6.0",
-    "html-webpack-plugin": "^4.5.1",
+    "html-webpack-plugin": "^5.1.0",
     "husky": "^4.3.8",
     "keycode": "^2.2.0",
     "lint-staged": "^10.5.4",
