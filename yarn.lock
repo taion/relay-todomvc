@@ -975,10 +975,10 @@
     pirates "^4.0.0"
     source-map-support "^0.5.16"
 
-"@babel/runtime-corejs3@^7.10.2", "@babel/runtime-corejs3@^7.6.3":
-  version "7.10.3"
-  resolved "https://registry.yarnpkg.com/@babel/runtime-corejs3/-/runtime-corejs3-7.10.3.tgz#931ed6941d3954924a7aa967ee440e60c507b91a"
-  integrity sha512-HA7RPj5xvJxQl429r5Cxr2trJwOfPjKiqhCXcdQPSqO2G0RHPZpXu4fkYmBaTKCp2c/jRaMK9GB/lN+7zvvFPw==
+"@babel/runtime-corejs3@^7.10.2", "@babel/runtime-corejs3@^7.13.9":
+  version "7.13.9"
+  resolved "https://registry.yarnpkg.com/@babel/runtime-corejs3/-/runtime-corejs3-7.13.9.tgz#b2fa9a6e5690ef8d4c4f2d30cac3ec1a8bb633ce"
+  integrity sha512-p6WSr71+5u/VBf1KDS/Y4dK3ZwbV+DD6wQO3X2EbUVluEOiyXUk09DzcwSaUH4WomYXrEPC+i2rqzuthhZhOJw==
   dependencies:
     core-js-pure "^3.0.0"
     regenerator-runtime "^0.13.4"
@@ -3666,14 +3666,14 @@ forwarded@~0.1.2:
   resolved "https://registry.yarnpkg.com/forwarded/-/forwarded-0.1.2.tgz#98c23dab1175657b8c0573e8ceccd91b0ff18c84"
   integrity sha1-mMI9qxF1ZXuMBXPozszZGw/xjIQ=
 
-found-relay@^0.8.3:
-  version "0.8.3"
-  resolved "https://registry.yarnpkg.com/found-relay/-/found-relay-0.8.3.tgz#ca8870ab6285edb393550d224aca5cbf96a40e54"
-  integrity sha512-fCR/ziq/DCTN6EIsC/iRcjvVh0n+ProRMc8x58Ou4KhILEMzAF4ElInKXat5Gb4QICaWyCh9bOl6UUg/80Fgpw==
+found-relay@^0.9.0:
+  version "0.9.0"
+  resolved "https://registry.yarnpkg.com/found-relay/-/found-relay-0.9.0.tgz#0c56bbe74aece6d32e5a762a8443449758a74bb4"
+  integrity sha512-vUjyQGg5zgEJ9g3admTKy99ZGzOlRhlg41BiQPu5hTSFV8MyemkDJPAFOoq39CYlCOnAHlpacEK4Zp1BQgXV6w==
   dependencies:
-    "@babel/runtime-corejs3" "^7.6.3"
+    "@babel/runtime-corejs3" "^7.13.9"
     is-promise "^4.0.0"
-    lodash "^4.17.15"
+    lodash "^4.17.21"
     prop-types "^15.7.2"
     warning "^4.0.3"
 
@@ -4842,10 +4842,10 @@ locate-path@^6.0.0:
   dependencies:
     p-locate "^5.0.0"
 
-lodash@^4.17.11, lodash@^4.17.14, lodash@^4.17.15, lodash@^4.17.19, lodash@^4.17.20:
-  version "4.17.20"
-  resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.20.tgz#b44a9b6297bcb698f1c51a3545a2b3b368d59c52"
-  integrity sha512-PlhdFcillOINfeV7Ni6oF1TAEayyZBoZ8bcshTHqOYJYlrqzRK5hagpagky5o4HfCzzd1TRkXPMFq6cKk9rGmA==
+lodash@^4.17.11, lodash@^4.17.14, lodash@^4.17.15, lodash@^4.17.19, lodash@^4.17.20, lodash@^4.17.21:
+  version "4.17.21"
+  resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.21.tgz#679591c564c3bffaae8454cf0b3df370c3d6911c"
+  integrity sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==
 
 log-symbols@^4.0.0:
   version "4.0.0"
